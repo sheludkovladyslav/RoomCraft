@@ -10,4 +10,9 @@ body {
 
 body.dark {
     background-color: #6b6b6b;
+
+    .legend {
+        background-color: getDarkColors('background-legent-dark');
+    }
+
 }

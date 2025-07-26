@@ -29,12 +29,34 @@
   border-radius: 10px;
 }
 
+.show {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .legend {
     max-width: 385px;
     padding: 20px 15px 30px 25px;
+    display: none;
     &__list {
       font-size: 14px;
+    }
+  }
+  .show {
+    display: flex;
+    justify-content: center;
+    padding: 27px 0;
+    background-color: getLightColors('background-secondary-light');
+    max-width: 385px;
+    border-radius: 20px;
+    &.dark {
+      background-color: getDarkColors('background-legent-dark');
+    }
+    &__svg {
+      fill: getLightColors('arrow-color');
+      &.dark {
+        background-color: getDarkColors('textcolor-legent');
+      }
     }
   }
 }
@@ -43,6 +65,7 @@
   .legend {
     max-width: 423px;
     padding: 35px 35px 35px 30px;
+    transform: translateY(-185px);
     &__list {
       font-size: 18px;
     }
@@ -50,5 +73,13 @@
 
   .info-button {
     padding: 10px 15px;
+  }
+
+  .show {
+    padding: 35px 0;
+    max-width: 423px;
+    &__svg {
+      transform: rotate(180deg);
+    }
   }
 }

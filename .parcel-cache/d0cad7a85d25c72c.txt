@@ -1,4 +1,4 @@
-4708
+4711
 77C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\chalk133980138001150954 1
 80C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml133980138000038678 1
 107C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\terser\lib\compress\tighten-body.js133980138012046099 0
@@ -27,7 +27,7 @@
 94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nan\tools\package.json133980138007041325 0
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\syntax\node\AttributeSelector.js133980138002568695 0
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\node-gyp-build-optional-packages\optional.js133980137999453503 0
-63C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist133980317722743576 1
+63C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist133980395126631121 1
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-select\lib\pseudo-selectors\pseudos.d.ts133980138008216928 0
 97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\prefixIds.js133980138009354316 0
 112C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\json-parse-even-better-errors\LICENSE.md133980137998720290 0
@@ -58,7 +58,7 @@
 88C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@babel\highlight133980137998854107 1
 96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\fast-glob\out\index.d.ts133980138009102870 0
 70C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\.htmlnanorc133980134237019748 0
-83C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\partials\legend.html133980315685136675 0
+83C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\partials\legend.html133980370195163607 0
 94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js133980138020284853 1
 122C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml\node_modules\posthtml-parser\package.json133980137999792677 0
 68C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\.parcelrc133980134237296816 0
@@ -104,11 +104,11 @@
 95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\csso\lib\replace\atrule133980138009102870 1
 82C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map133980138004843153 1
 124C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\runtime-js\lib\helpers\worker\wasm-loader.js133980138008839487 0
-107C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\common\adopt-buffer.js133980137997223920 0
-81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\path-type133980137999252153 1
-94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\diagnostic\src133980137998139067 1
 125C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\test\fixtures\config\subfolder\.parcelrc133980138003542698 0
 119C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-sass\lib\SassTransformer.js133980137997030037 0
+94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\diagnostic\src133980137998139067 1
+107C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\common\adopt-buffer.js133980137997223920 0
+81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\path-type133980137999252153 1
 102C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\csso\lib\replace\Percentage.js133980138009464924 0
 90C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\.package-lock.json133980138040464948 0
 71C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\package.json133980255984231460 0
@@ -138,7 +138,7 @@
 95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\fclone\bench\loopobj.js133980138004214810 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\JP.js133980138022468600 0
 106C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\xxhash-wasm\umd\xxhash-wasm.js.map133980138001753238 0
-73C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\index.html133980256609963560 0
+73C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\index.html133980371120945504 0
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\src\_interop_require_default.js133980138014715347 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-select\lib\compile.d.ts.map133980138004878155 0
 95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb-win32-x64\index.js133980137995398844 0
@@ -151,7 +151,7 @@
 80C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\js\themeToggle.js133980255984277811 0
 90C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@lezer\common\dist133980138003019158 1
 121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest5.c133980138012773582 0
-65C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\js133980255984277811 1
+65C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\js133980364862523641 1
 78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\dotenv133980138000058800 1
 134C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\package-manager\test\fixtures\has-foo\node_modules\foo133980138009435271 1
 112C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\abortcontroller-polyfill\src\ponyfill.js133980138003110973 0
@@ -170,7 +170,7 @@
 93C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml-match-helper133980137998417569 1
 67C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass133980255984352818 1
 93C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\_path.js133980138000668059 0
-78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\components133980255984328995 1
+78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\components133980318657082504 1
 92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\packager-svg133980137999015536 1
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\htmlnano\lib\modules\removeEmptyAttributes.js133980138006654424 0
 110C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\source\conditional-keys.d.ts133980138002890059 0
@@ -189,7 +189,7 @@
 150C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-false-glob\a133980138009495529 1
 74C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\global133980255984328995 1
 73C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\utils133980255984352818 1
-89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\utils\_variables.scss133980255984352818 0
+89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\utils\_variables.scss133980348621700705 0
 91C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\msgpackr\index.d.ts133980138005322908 0
 98C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\term-size\vendor\.DS_Store133980137995704762 0
 92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\escape-string-regexp133980137998484147 1
@@ -204,7 +204,7 @@
 87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\xxhash-wasm\umd133980138001354058 1
 78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\stable133980137999232202 1
 134C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\msgpackr-extract\node_modules\node-gyp-build-optional-packages133980138000935845 1
-87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\global\_global.scss133980134237599213 0
+87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\global\_global.scss133980386569397336 0
 109C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\removeEmptyContainers.js133980138011416279 0
 93C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nan\doc\converters.md133980138007877773 0
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\lib\public\MutableBundleGraph.js133980138013618429 0
@@ -228,8 +228,8 @@
 84C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml\lib133980137997727373 1
 101C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\mdn-data\api\inheritance.json133980138003719939 0
 100C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\source\except.d.ts133980138004275973 0
-75C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\images\icons133980308185703434 1
-91C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\components\_legend.scss133980317721625524 0
+75C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\images\icons133980324785026878 1
+91C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\sass\components\_legend.scss133980394787714511 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\KP.js133980138023325779 0
 96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\terser\tools\terser.d.ts133980138012574430 0
 89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\stable\index.d.ts133980137996242398 0
@@ -239,15 +239,26 @@
 100C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\_collections.js133980137999622241 0
 113C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\src\_class_name_tdz_error.js133980138013991026 0
 81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\partials\menu.html133980255984301808 0
-96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nth-check\lib\index.d.ts133980138006475288 0
-98C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\lib\Parcel.js133980138013900799 0
-92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-arrayish\index.js133980137999470378 0
-97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\package.json133980138031183959 0
-85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\color-convert133980138000986104 1
-112C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js\lib\loadNative.js133980138001410180 0
-92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\images\icons\array-legend.svg133980307789917622 0
-103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\TL.js133980138029104871 0
-102C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\types\legacy\options.d.ts133980138013088956 0
+84C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\browserslist133980138003191849 1
+121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest3.c133980138012494208 0
+80C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\boolbase133980137997563827 1
+106C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\source\partial-deep.d.ts133980138006795354 0
+92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\htmlnano\lib\modules133980138007615281 1
+75C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\js\legend.js133980395125443715 0
+99C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-js\source-map.js133980138003100339 0
+97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\utils\src\glob.js133980138005769860 0
+78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@types133980137983405870 1
+95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nan\doc\v8_internals.md133980138010971695 0
+108C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-what\lib\commonjs\parse.d.ts.map133980138004095071 0
+79C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel133980138038988566 1
+83C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@jridgewell133980137983787109 1
+103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GY.js133980138021025843 0
+89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\parcel\lib\cli.js133980137999262122 0
+89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-number\LICENSE133980137997739517 0
+85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\src\images\icons\array.svg133980323472984163 0
+111C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\utility-types\dist\utility-types.js.map133980138003281793 0
+128C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\focusoptions-preventscroll.js133980138020324749 0
+120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\htmlnano\lib\modules\normalizeAttributeValues.js133980138005842560 0
 94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\yaml\browser\schema.js133980138008539054 0
 104C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\react-error-overlay\lib\index.js133980138001245979 0
 118C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\test\fixtures\application-targets133980138016601959 1
@@ -263,14 +274,6 @@
 95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\fs\lib\index.js133980138000591865 0
 79C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\globals133980138000668059 1
 115C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\selection-api.js133980138027416803 0
-97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\utils\src\glob.js133980138005769860 0
-78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@types133980137983405870 1
-95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nan\doc\v8_internals.md133980138010971695 0
-108C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-what\lib\commonjs\parse.d.ts.map133980138004095071 0
-79C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel133980138038988566 1
-83C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@jridgewell133980137983787109 1
-103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GY.js133980138021025843 0
-89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\parcel\lib\cli.js133980137999262122 0
 97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\sortAttrs.js133980138012584485 0
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\src\_class_private_field_init.js133980138014105518 0
 100C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\syntax\function133980138014834511 1
@@ -291,9 +294,6 @@
 122C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-react-refresh-wrap\src\helpers133980138001720973 1
 89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\binary-extensions133980138000852955 1
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\CN.js133980138014118136 0
-84C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\browserslist133980138003191849 1
-121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest3.c133980138012494208 0
-80C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\boolbase133980137997563827 1
 87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\.bin\terser.ps1133980138033396430 0
 76C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\csso133980138011673244 1
 78C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\braces133980138000085878 1
@@ -312,6 +312,11 @@
 135C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\parcel-reporter-clean-dist\test\fixtures\packageV3\package.json133980138005946900 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\EE.js133980138019405411 0
 80C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\chokidar133980138002224186 1
+96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\nth-check\lib\index.d.ts133980138006475288 0
+98C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\lib\Parcel.js133980138013900799 0
+92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-arrayish\index.js133980137999470378 0
+97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\package.json133980138031183959 0
+85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\color-convert133980138000986104 1
 82C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\color-name133980137998507078 1
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\fast-glob\out\readers\stream.js133980138006550309 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\SN.js133980138027691415 0
@@ -832,7 +837,6 @@
 100C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\yaml\browser\types\binary.js133980137997147826 0
 85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@trysound\sax133980137999142632 1
 91C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\terser\lib\parse.js133980138011341796 0
-120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-support\browser-source-map-support.js133980137996097702 0
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\urlsearchparams.js133980138029782741 0
 156C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-false\src\index.js133980138011516935 0
 99C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\yaml\browser\types\pairs.js133980138005072098 0
@@ -966,9 +970,6 @@
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\CM.js133980138014091161 0
 118C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\package-manager\src\JSONParseStream.js133980138006026236 0
 107C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\utility-types\dist\utility-types.js133980138000482929 0
-111C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\utility-types\dist\utility-types.js.map133980138003281793 0
-128C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\focusoptions-preventscroll.js133980138020324749 0
-120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\htmlnano\lib\modules\normalizeAttributeValues.js133980138005842560 0
 89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\license133980137995521215 0
 95C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-select\lib\index.js133980138001923619 0
 111C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\src\_is_native_function.js133980138014772647 0
@@ -1055,7 +1056,6 @@
 115C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\test\fixtures\config\.parcelrc133980138002842691 0
 131C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml-include\node_modules\posthtml-parser\dist\index.js133980137998160196 0
 115C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\input-pattern.js133980138022124914 0
-106C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\source\partial-deep.d.ts133980138006795354 0
 107C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\type-fest\source\promise-value.d.ts133980138007226607 0
 121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@babel\highlight\node_modules\color-name\index.js133980137999552203 0
 99C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\svgo\plugins\removeAttrs.js133980138009773214 0
@@ -1392,6 +1392,7 @@
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\dom-serializer\lib\esm\foreignNames.d.ts.map133980138002279005 0
 109C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\streams.js133980138028024118 0
 88C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\stable\README.md133980137997683204 0
+120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-support\browser-source-map-support.js133980137996097702 0
 104C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\posthtml-expressions\lib\tags.js133980138001874259 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-support\package.json133980138000258359 0
 100C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-support\README.md133980138001776355 0
@@ -1421,8 +1422,6 @@
 108C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\webusb.js133980138030798519 0
 105C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\syntax\node\index.js133980138012786282 0
 101C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-js\source-map.d.ts133980138004825363 0
-92C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\htmlnano\lib\modules133980138007615281 1
-99C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\source-map-js\source-map.js133980138003100339 0
 84C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\LICENSE133980137996890358 0
 97C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\types\value\map.d.ts133980138013022089 0
 96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-what\lib\es\types.js133980138002981368 0
@@ -1552,6 +1551,8 @@
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\viewport-units.js133980138030200807 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\types\legacy\importer.d.ts133980138012831646 0
 141C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\parcel-reporter-clean-dist\test\fixtures\packageV2\files\embed\embed2133980138011859359 1
+103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\TL.js133980138029104871 0
+102C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\types\legacy\options.d.ts133980138013088956 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\AM.js133980138006739693 0
 106C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\sass\types\legacy\plugin_this.d.ts133980138013200531 0
 114C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\script-async.js133980138027278818 0
@@ -2212,8 +2213,8 @@
 109C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lz4\lib\dll\example133980138015097236 1
 106C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\lib\CommittedAsset.js133980138011241294 0
 127C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lz4\lib\dll\example\fullbench-dll.sln133980138014715347 0
-119C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lz4\lib\dll\example\README.md133980138014662583 0
 87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\clone\clone.iml133980138000567820 0
+119C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lz4\lib\dll\example\README.md133980138014662583 0
 112C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\lmdb\dependencies\lmdb-data-v1\libraries133980137995841831 1
 117C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\lib\_interop_require_wildcard.js133980138011241294 0
 108C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\css-tree\lib\syntax\node\Function.js133980138011485271 0
@@ -2337,7 +2338,6 @@
 89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\csso\dist\csso.js133980138006563355 0
 94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-arrayish\.npmignore133980137996322000 0
 90C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-number\index.js133980137996309789 0
-89C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-number\LICENSE133980137997739517 0
 94C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-number\package.json133980137995600004 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\MD.js133980138023961596 0
 90C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\is-json\.npmignore133980137996322000 0
@@ -2624,7 +2624,7 @@
 88C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\escalade\license133980137995624499 0
 104C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@nodelib\fs.scandir\package.json133980138003764651 0
 120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\src\_check_private_redeclaration.js133980138013739900 0
-88C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\symbol-defs.30d81522.svg133980315982086592 0
+88C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\symbol-defs.30d81522.svg133980383064456772 0
 93C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\escalade\package.json133980137999127867 0
 85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\escalade\sync133980138002266441 1
 102C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\csso\lib\clean\TypeSelector.js133980138010931594 0
@@ -3123,6 +3123,7 @@
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GL.js133980138020865158 0
 105C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\core\src\public\Target.js133980138015267511 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GM.js133980138020890625 0
+81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.429be476.js133980395126605783 0
 116C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\features\pointer-events.js133980138026517755 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GN.js133980138020890625 0
 103C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\caniuse-lite\data\regions\GP.js133980138020931626 0
@@ -3828,6 +3829,7 @@
 121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\lib\_define_enumerable_properties.js133980138009102870 0
 120C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\lib\_initializer_define_property.js133980138010349900 0
 179C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\package-browser-alias\subfolder1\subfolder2\subfile.js133980138013122449 0
+85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.429be476.js.map133980395126619246 0
 108C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\lib\_define_property.js133980138009289595 0
 96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\optimizer-terser133980137999015536 1
 96C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@swc\helpers\lib\_get.js133980138009592159 0
@@ -4065,6 +4067,7 @@
 115C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js\src\JSTransformer.js133980138000788241 0
 118C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js\lib\esmodule-helpers.js133980137997122187 0
 115C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js\lib\JSTransformer.js133980137999583897 0
+112C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-js\lib\loadNative.js133980138001410180 0
 101C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-image\lib133980138000591865 1
 101C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-image\src133980138001327721 1
 121C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\@parcel\transformer-image\src\ImageTransformer.js133980137998307252 0
@@ -4696,13 +4699,13 @@
 85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\.bin\svgo.cmd133980138032178990 0
 83C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\.bin\terser133980138033396430 0
 87C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\node_modules\.bin\terser.cmd133980138033396430 0
-81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.257687af.js133980315981179875 0
-85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.257687af.js.map133980315981231572 0
-81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.975ef6c8.js133980146111533311 0
-85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.975ef6c8.js.map133980146111547503 0
-82C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.b07a87f3.css133980317722699701 0
-86C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.b07a87f3.css.map133980317722713267 0
-74C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.html133980315981179875 0
+81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.257687af.js133980383064351747 0
+85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.257687af.js.map133980383064364406 0
+81C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.975ef6c8.js133980383064471392 0
+85C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.975ef6c8.js.map133980383064493515 0
+82C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.b07a87f3.css133980394788472276 0
+86C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.b07a87f3.css.map133980394788472276 0
+74C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\dist\index.html133980383064416112 0
 99C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\.github\assets\actions-config-step-1.png133980250403289208 0
 90C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\.github\assets\how-it-works.png133980250403466587 0
 91C:\Users\Sergey\Downloads\111111111111\roomraft3\RoomCraft\.github\assets\repo-settings.png133980250403500087 0

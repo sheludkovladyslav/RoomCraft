@@ -18,6 +18,17 @@ $dark-theme: (
   'background-menu': #eeeeee,
 );
 
+$fonts: (
+  'Montserrat': #{'Montserrat',
+  sans-serif},
+  'Noto-sans': #{'Noto Sans',
+  sans-serif},
+);
+
+@function getFonts($key) {
+  @return map-get($fonts, $key);
+}
+
 @function getLightColors($key) {
   @return map-get($light-theme, $key);
 }

@@ -97,14 +97,12 @@ body.dark {
   border-radius: 20px;
   background: #fff;
   width: 420px;
-  height: 60px;
+  padding: 9px;
   -moz-column-gap: 10px;
        column-gap: 10px;
-  padding-left: 11px;
 }
 .menu-filter__list {
   width: 92px;
-  height: 33px;
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid #686868;
@@ -115,12 +113,14 @@ body.dark {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.9s ease;
+  cursor: pointer;
 }
-.menu-filter__list:hover {
+.menu-filter__list:active {
   background: #04aa6d;
   color: #fff;
 }
@@ -135,12 +135,10 @@ body.dark {
   background: #fff;
   box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
   width: 202px;
-  height: 227px;
   padding: 15px 10px;
 }
 .menu-cards-card__img {
   width: 147px;
-  height: 128px;
   flex-shrink: 0;
   aspect-ratio: 147/128;
 }

@@ -1,7 +1,7 @@
 {
-  "name": "parcel-project-template",
+  "name": "Room Craft",
   "version": "2.0.0",
-  "description": "",
+  "description": "An innovative room designer that will help you bring your ideas to life",
   "homepage": "https://github.com/sheludkovladyslav/RoomCraft",
   "scripts": {
     "start": "parcel src/*.html",
@@ -12,7 +12,7 @@
     "url": "git+https:https://github.com/sheludkovladyslav/RoomCraft"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Vladyslav Sheludko <vladsh2103@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sheludkovladyslav/RoomCraft/issues"

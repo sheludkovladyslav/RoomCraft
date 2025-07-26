@@ -1,0 +1,27 @@
+$light-theme: (
+  'textcolor-primary': #000,
+  'textcolor-secondary': #5b5b5b,
+  'background-primery-light': #fff,
+  'background-secondary-light': #b2c6d8,
+  'textcolor-legent': #fff,
+  'button-select': #04aa6d,
+  'background-menu': #eeeeee,
+);
+
+$dark-theme: (
+  'textcolor-primary': #000,
+  'textcolor-secondary': #5b5b5b,
+  'background-primery-dark': #6b6b6b,
+  'background-secondary-dark': #525252,
+  'textcolor-legent': #fff,
+  'button-select': #04aa6d,
+  'background-menu': #eeeeee,
+);
+
+@function getColor($key) {
+  @return map-get($light-theme, $key);
+}
+
+@function getColor($key) {
+  @return map-get($dark-theme, $key);
+}

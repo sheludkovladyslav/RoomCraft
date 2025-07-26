@@ -18,10 +18,10 @@ $dark-theme: (
   'background-menu': #eeeeee,
 );
 
-@function getColor($key) {
+@function getLightColors($key) {
   @return map-get($light-theme, $key);
 }
 
-@function getColor($key) {
+@function getDarkColors($key) {
   @return map-get($dark-theme, $key);
 }

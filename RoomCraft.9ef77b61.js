@@ -1,0 +1,2 @@
+let toggleTheme=document.querySelector(".theme-toggle"),theme=localStorage.getItem("RoomCraftTheme")||"light";"dark"===theme&&(document.body.classList.add("dark"),toggleTheme.classList.add("dark")),toggleTheme.addEventListener("click",()=>{let e=document.body.classList.toggle("dark");toggleTheme.classList.toggle("dark"),localStorage.setItem("RoomCraftTheme",e?"dark":"light")});
+//# sourceMappingURL=RoomCraft.9ef77b61.js.map

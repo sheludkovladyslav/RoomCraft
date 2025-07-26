@@ -1,4 +1,5 @@
-@import './utils/variables';
-@import './global/reset';
-@import './global/common';
+@import 'global/reset';
+@import 'utils/variables';
+@import 'global/common';
 @import './components/header';
+@import './components/legend.scss';

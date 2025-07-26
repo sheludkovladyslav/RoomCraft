@@ -1,6 +1,4 @@
-@media (max-width: 320px) {
 
-}
 
 
 
@@ -86,3 +84,31 @@ line-height: normal;
 }
 }
 }
+
+
+@media (min-width: 320px) {
+.menu {
+    width: 320px;
+
+    &-filter {
+        padding: 8px;
+
+        &__list {
+            padding: 3.4px;
+        }
+    }
+
+    &-cards {
+        
+        &-card {
+            padding: 10px;
+
+            &__img {
+                width: 117px;
+            }
+        }
+    }
+}
+}
+
+@media (min-width: )

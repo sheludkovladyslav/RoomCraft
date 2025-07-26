@@ -155,3 +155,21 @@ body.dark {
   font-weight: 400;
   line-height: normal;
 }
+
+@media (min-width: 320px) {
+  .menu {
+    width: 320px;
+  }
+  .menu-filter {
+    padding: 8px;
+  }
+  .menu-filter__list {
+    padding: 3.4px;
+  }
+  .menu-cards-card {
+    padding: 10px;
+  }
+  .menu-cards-card__img {
+    width: 117px;
+  }
+}

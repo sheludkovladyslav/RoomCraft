@@ -93,16 +93,13 @@ body.dark {
 }
 .menu-filter {
   display: flex;
+  justify-content: space-around;
   align-items: center;
   border-radius: 20px;
   background: #fff;
-  width: 420px;
   padding: 9px;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
 }
 .menu-filter__list {
-  width: 92px;
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid #686868;
@@ -134,8 +131,7 @@ body.dark {
   border-radius: 18px;
   background: #fff;
   box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
-  width: 202px;
-  padding: 15px 10px;
+  padding: 15px 27px;
 }
 .menu-cards-card__img {
   width: 147px;

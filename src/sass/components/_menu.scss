@@ -13,15 +13,13 @@ padding: 20px 15px;
 
 &-filter {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     border-radius: 20px;
 background: getLightColors('background-primery-light');
-width: 420px;
 padding: 9px;
-column-gap: 10px;
 
 &__list {
-    width: 92px;
 flex-shrink: 0;
 border-radius: 10px;
 border: 1px solid #686868;
@@ -58,8 +56,7 @@ gap: 15px;
     border-radius: 18px;
 background: getLightColors('background-primery-light');
 box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
-width: 202px;
-padding: 15px 10px;
+padding: 15px 27px;
 
 &__img {
     width: 147px;

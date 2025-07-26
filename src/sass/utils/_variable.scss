@@ -16,12 +16,24 @@ $dark-theme: (
   'textcolor-legent': #fff,
   'button-select': #04aa6d,
   'background-menu': #eeeeee,
+  'background-legent-dark': #4c4e51,
 );
 
-@function getColor($key) {
+$fonts: (
+  'Montserrat': #{'Montserrat',
+  sans-serif},
+  'Noto-sans': #{'Noto Sans',
+  sans-serif},
+);
+
+@function getFonts($key) {
+  @return map-get($fonts, $key);
+}
+
+@function getLightColors($key) {
   @return map-get($light-theme, $key);
 }
 
-@function getColor($key) {
+@function getDarkColors($key) {
   @return map-get($dark-theme, $key);
 }

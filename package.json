@@ -29,8 +29,9 @@
     "three": "^0.178.0"
   },
   "devDependencies": {
-    "buffer": "^6.0.3",
+    "@parcel/transformer-raw": "^2.15.4",
     "@parcel/transformer-sass": "^2.15.4",
+    "buffer": "^6.0.3",
     "parcel": "^2.15.4",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"

@@ -1,0 +1,2 @@
+let legend=document.querySelector(".legend"),offsetX,offsetY,isDragging=!1;legend.addEventListener("mousedown",e=>{isDragging=!0,offsetX=e.clientX-legend.offsetLeft,offsetY=e.clientY-legend.offsetTop,legend.style.cursor="grabbing"}),document.addEventListener("mousemove",e=>{isDragging&&(legend.style.left=e.clientX-offsetX+"px",legend.style.top=e.clientY-offsetY+"px")}),document.addEventListener("mouseup",()=>{isDragging=!1,legend.style.cursor="grab"});
+//# sourceMappingURL=RoomCraft.381975df.js.map

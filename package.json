@@ -2,7 +2,7 @@
   "name": "Room Craft",
   "version": "2.0.0",
   "description": "An innovative room designer that will help you bring your ideas to life",
-  "homepage": "https://github.com/sheludkovladyslav/RoomCraft",
+  "homepage": "https://sheludkovladyslav.github.io/RoomCraft",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /RoomCraft/"

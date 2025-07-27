@@ -1,7 +1,10 @@
+.legent-section__container {
+  max-width: 375px;
+}
+
 .legend {
   padding: 15px;
   background-color: getLightColors('background-secondary-light');
-  max-width: 375px;
   border-radius: 20px;
   &.dark {
     background-color: getDarkColors('background-legent-dark');
@@ -34,38 +37,45 @@
 }
 
 @media (min-width: 768px) {
-  .legend {
+  .legent-section__container {
+    overflow: hidden;
+    border-radius: 20px;
     max-width: 385px;
+  }
+  .legend {
     padding: 20px 15px 30px 25px;
     display: none;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(-50px);
     &__list {
       font-size: 14px;
     }
   }
+
   .show {
     display: flex;
     justify-content: center;
     padding: 27px 0;
+    width: 100%;
     background-color: getLightColors('background-secondary-light');
     max-width: 385px;
     border-radius: 20px;
-    &.dark {
-      background-color: getDarkColors('background-legent-dark');
-    }
+    transition: opacity 300ms linear;
     &__svg {
       fill: getLightColors('arrow-color');
-      &.dark {
-        background-color: getDarkColors('textcolor-legent');
-      }
     }
   }
 }
 
 @media (min-width: 1440px) {
-  .legend {
+  .legent-section__container {
     max-width: 423px;
+  }
+  .legend {
     padding: 35px 35px 35px 30px;
-    transform: translateY(-185px);
+    transform: translateY(-50px);
     &__list {
       font-size: 18px;
     }
@@ -78,8 +88,6 @@
   .show {
     padding: 35px 0;
     max-width: 423px;
-    &__svg {
-      transform: rotate(180deg);
-    }
+    width: 100%;
   }
 }

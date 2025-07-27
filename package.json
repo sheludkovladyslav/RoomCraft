@@ -26,6 +26,7 @@
   "dependencies": {
     "cannon-es": "^0.20.0",
     "modern-normalize": "^1.1.0",
+    "swiper": "^11.2.10",
     "three": "^0.178.0"
   },
   "devDependencies": {

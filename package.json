@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "Room Craft",
   "version": "2.0.0",
-  "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "description": "An innovative room designer that will help you bring your ideas to life",
+  "homepage": "https://sheludkovladyslav.github.io/RoomCraft",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /RoomCraft/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/sheludkovladyslav/RoomCraft"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Vladyslav Sheludko <vladsh2103@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/sheludkovladyslav/RoomCraft/issues"
   },
   "targets": {
     "default": {
@@ -29,8 +29,8 @@
     "three": "^0.178.0"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.0",
     "buffer": "^6.0.3",
+    "@parcel/transformer-sass": "^2.15.4",
     "parcel": "^2.15.4",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"

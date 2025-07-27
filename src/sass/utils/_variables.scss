@@ -1,0 +1,39 @@
+$light-theme: (
+  'textcolor-primary': #000,
+  'textcolor-secondary': #5b5b5b,
+  'background-primery-light': #fff,
+  'background-secondary-light': #b2c6d8,
+  'textcolor-legent': #fff,
+  'button-select': #04aa6d,
+  'background-menu': #eeeeee,
+);
+
+$dark-theme: (
+  'textcolor-primary': #000,
+  'textcolor-secondary': #5b5b5b,
+  'background-primery-dark': #6b6b6b,
+  'background-secondary-dark': #525252,
+  'textcolor-legent': #fff,
+  'button-select': #04aa6d,
+  'background-menu': #eeeeee,
+  'background-legent-dark': #4c4e51,
+);
+
+$fonts: (
+  'Montserrat': #{'Montserrat',
+  sans-serif},
+  'Noto-sans': #{'Noto Sans',
+  sans-serif},
+);
+
+@function getFonts($key) {
+  @return map-get($fonts, $key);
+}
+
+@function getLightColors($key) {
+  @return map-get($light-theme, $key);
+}
+
+@function getDarkColors($key) {
+  @return map-get($dark-theme, $key);
+}

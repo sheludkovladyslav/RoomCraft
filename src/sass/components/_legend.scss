@@ -1,7 +1,30 @@
 .legend {
+  position: absolute;
+  cursor: grab;
+  max-width: 302px;
+  width: 100%;
+
+  top: 87px;
+  left: 9px;
+
+  @media (min-width:768px) {
+    top: 13px;
+    left: 9px;
+    max-width: 385px;
+  }
+
+  @media (min-width:1024px) {
+    right: 33px;
+    bottom: 42px;
+    left: auto;
+    top: auto;
+    max-width: 423px;
+  }
+
   &__wrapper {
     max-width: 302px;
   }
+
   &__info {
     display: flex;
     flex-direction: column;
@@ -15,11 +38,13 @@
     background-color: getLightColors('background-secondary-light');
     color: getLightColors('textcolor-legent');
   }
+
   &__item {
     display: flex;
     align-items: center;
     gap: 10px;
   }
+
   &__text--button {
     display: inline-block;
     padding: 10px 20px;
@@ -61,10 +86,12 @@
       transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
         transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     &__list {
       font-size: 14px;
     }
   }
+
   .show {
     display: flex;
     justify-content: center;
@@ -82,6 +109,7 @@
       transform: rotate(180deg);
     }
   }
+
   .close-legend {
     display: none;
     position: absolute;
@@ -112,10 +140,12 @@
       font-size: 18px;
       transform: translateY(-50px);
     }
+
     &__wrapper {
       max-width: 423px;
     }
   }
+
   .info-button {
     padding: 10px 15px;
   }

@@ -19,7 +19,7 @@ export const roomInitHtml = () => {
      f =>
        `<li class="furniture">
           <button class="furniture__spawn" data-spawn="${f.key}">
-          <h3 class="furniture__name">${f.name}</h3>
+          <h3 class="furniture__name">Назва${f.name}</h3>
           <p class="furniture__text">Категорія: ${f.category}</p>
           </button>
         </li>

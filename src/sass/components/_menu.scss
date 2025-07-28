@@ -33,7 +33,7 @@
 
 
 
-            &:active {
+            &.active {
                 background: getLightColors('button-select');
                 color: getLightColors('background-primery-light');
             }
@@ -41,10 +41,10 @@
     }
 
     &-cards {
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
+margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+  gap: 15px;
 
         &-card {
             border-radius: 18px;
@@ -128,7 +128,7 @@
                 padding: 15px;
 
                 &__title {
-                    font-size: 18px;
+                    font-size: 15px;
                 }
 
                 &__img {

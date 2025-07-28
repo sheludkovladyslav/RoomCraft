@@ -41,7 +41,7 @@
   &-cards {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 15px;
 
     &-card {
@@ -52,7 +52,6 @@
 
       &__img {
         width: 117px;
-
         flex-shrink: 0;
         aspect-ratio: 147/128;
       }
@@ -65,6 +64,7 @@
         font-weight: 400;
         line-height: normal;
         margin-top: 10px;
+        text-align: left;
       }
 
       &__category {
@@ -73,9 +73,23 @@
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
+        text-align: left;
         line-height: normal;
       }
     }
+  }
+}
+
+.furniture__spawn {
+  width: 100%;
+}
+
+.menu-cards-card {
+  transition: transform 0.3s ease;
+
+  &.active {
+    transform: scale(1.05);
+    z-index: 1;
   }
 }
 
@@ -125,7 +139,7 @@
         padding: 15px;
 
         &__title {
-          font-size: 15px;
+          font-size: 16px;
         }
 
         &__img {

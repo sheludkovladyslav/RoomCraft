@@ -1,8 +1,14 @@
+@import "../../node_modules/swiper/swiper-bundle.css";
+
+
 .menu {
     border-radius: 49px;
     background: rgba(0, 65, 125, 0.30);
     max-width: 320px;
+    max-height: 997px;
     padding: 20px 15px;
+
+
 
     &-filter {
         display: flex;
@@ -42,9 +48,18 @@
 
     &-cards {
 margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
-  gap: 15px;
+
+  .swiper-wrapper {
+    display: flex; // обов'язково для Swiper
+  }
+
+  .swiper-slide {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+
+
 
         &-card {
             border-radius: 18px;
@@ -82,6 +97,7 @@ margin-top: 10px;
 }
 
 
+
 @media (min-width: 768px) {
     .menu {
         max-width: 413px;
@@ -95,6 +111,10 @@ margin-top: 10px;
         }
 
         &-cards {
+
+             .swiper-slide {
+      grid-template-columns: 1fr 1fr; // 2 карточки в ряд
+    }
             &-card {
                 padding: 16px;
 
@@ -132,7 +152,7 @@ margin-top: 10px;
                 }
 
                 &__img {
-                    width: 147px;
+                    width: 137px;
                 }
 
                 &__category {

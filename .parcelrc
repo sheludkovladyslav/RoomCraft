@@ -1,9 +1,16 @@
 {
   "extends": [
+    "@parcel/config-default",
     "@parcel/config-default"
   ],
   "reporters": [
     "...",
     "parcel-reporter-clean-dist"
-  ]
+  ],
+  "optimizers": {
+    "*.svg": []
+  },
+  "transformers": {
+    "*.glb": ["@parcel/transformer-raw"]
+  }
 }

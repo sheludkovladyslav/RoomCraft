@@ -1,0 +1,141 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-radius: 25px 25px 0px 0px;
+  background-color: getLightColors('background-secondary-light');
+  padding: 12px 10px;
+
+  &-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 20px;
+    background-color: getLightColors('background-primery-light');
+    padding: 15px 11px;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      border: 1px solid #686868;
+      padding: 5px 9px;
+      font-size: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+
+      &:active,
+      &:hover {
+        background-color: getLightColors('button-select');
+        color: getLightColors('background-primery-light');
+      }
+    }
+  }
+}
+
+.furniture-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__item {
+    flex-basis: calc((100% - 12px) / 2);
+    border-radius: 18px;
+    background: getLightColors('background-primery-light');
+    box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
+    padding: 12px 14px 22px;
+    transition: scale 0.3 ease;
+
+    &:hover {
+      scale: 1.02;
+    }
+
+    &:active {
+      scale: 0.98;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    pointer-events: none;
+  }
+
+  &__photo {
+    width: 115px;
+    height: 100px;
+  }
+  &__name {
+    font-family: getFonts('Noto-sans');
+    margin-top: 10px;
+  }
+
+  &__category {
+    font-size: 12px;
+    color: getLightColors('textcolor-secondary');
+    font-family: getFonts('Noto-sans');
+  }
+}
+
+@media (min-width: 768px) {
+  .menu {
+    max-width: 415px;
+
+    &-filter {
+      column-gap: 11px;
+
+      &__list {
+        padding: 7px 16px;
+      }
+    }
+
+    &-cards {
+      &-card {
+        padding: 16px;
+
+        &__title {
+          font-size: 18px;
+        }
+
+        &__img {
+          width: 152px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    &-filter {
+      column-gap: 8px;
+
+      &__list {
+        padding: 7px 12px;
+        font-size: 14px;
+      }
+    }
+
+    &-cards {
+      &-card {
+        padding: 15px;
+
+        &__title {
+          font-size: 18px;
+        }
+
+        &__img {
+          width: 147px;
+        }
+
+        &__category {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

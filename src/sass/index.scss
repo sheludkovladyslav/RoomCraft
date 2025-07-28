@@ -1,0 +1,9 @@
+@import 'utils/variables';
+@import 'global/reset';
+@import 'global/common';
+@import 'global/global';
+@import './components/header';
+@import './components/legend.scss';
+@import './components/room.scss';
+@import './components/menu';
+@import './components/playground.scss';

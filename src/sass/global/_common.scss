@@ -1,0 +1,20 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  font-family: getFonts('Montserrat');
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.214;
+}
+
+body.dark {
+  background-color: #6b6b6b;
+
+  .legend {
+    background-color: getDarkColors('background-legent-dark');
+  }
+
+  .menu {
+    background-color: rgba(82, 82, 82, 0.74);
+  }
+}

@@ -1,62 +1,74 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
-import lodash from 'lodash';
+import lodash, { size } from 'lodash';
 import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
 export const roomInitHtml = () => {
-  const roomContainer = document.querySelector('.room');
+  const roomContainer = document.querySelector('.room__container');
   const roomHtml = `
+  <aside class="room__menu menu">
+  <ul class="menu-filter">
+    <li class="menu-filter__item" data-filter="decoration">Декорації</li>
+    <li class="menu-filter__item" data-filter="furniture">Меблі</li>
+    <li class="menu-filter__item" data-filter="electronic">Електроніка</li>
+    <li class="menu-filter__item" data-filter="etc">ін.</li>
+  </ul>
 
- <ul data-list class="furniture-list">
- ${furnitureList
-   .map(
-     f =>
-       `<li class="furniture">
-          <button class="furniture__spawn" data-spawn="${f.key}">
-          <h3 class="furniture__name">${f.name}</h3>
-          <p class="furniture__text">Категорія: ${f.category}</p>
-          </button>
+
+  <ul data-list class="menu-furnirute__list furniture-list">
+${furnitureList
+  .map(
+    f =>
+      `<li class="furniture-list__item" role="button" data-spawn="${f.key}">
+          <article class="furniture-list__content">
+            <div class="furniture-list__photo">
+              <img src="${f.image}" alt="${f.name}" class="furniture-list__image" hidden/>
+            </div>
+            <h3 class="furniture-list__name">${f.name}</h3>
+            <span class="furniture-list__category">Категорія: ${f.category}</span>
+           </article>
         </li>
       `
-   )
-   .join('')}
- </ul>
- <div class="room__playground">
-  <canvas id="canvas"></canvas>
-</div>
+  )
+  .join('')}
+      </ul>
+
+  </aside>
+  <div class="room__playground">
+    <canvas class="playground"></canvas>
+  </div>
 `;
   roomContainer.innerHTML = roomHtml;
 };
 
 export default class Room {
-  constructor({ canvas, button }) {
+  constructor({ canvas, button, container }) {
     this.canvas = canvas;
     this.button = button;
     this.furnitureList = furnitureList;
     this.glb = null;
     this.walls = [];
+    this.container = container;
+    this.width = this.container.clientWidth;
+    this.height = this.container.clientHeight;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
-      70,
-      sizes.width / sizes.height,
+      50,
+      this.width / this.height,
       0.1,
       100
     );
-    this.camera.position.set(5, 5, 5);
+    this.camera.position.set(14, 12, 14);
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
       canvas: this.canvas,
     });
-    this.renderer.setSize(sizes.width, sizes.height);
+
+    this.renderer.setSize(this.width, this.height);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -88,12 +100,12 @@ export default class Room {
   init() {
     this._setupScene();
     this._setupPhysics();
-    this._setupEvents();
+    this._setupes();
     this._animate();
   }
 
   _setupScene() {
-    this.scene.background = new THREE.Color(0x222222);
+    this.scene.background = new THREE.Color(0x5b5b5b);
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(5, 10, 5);
@@ -122,11 +134,15 @@ export default class Room {
     wallMeshLeft.position.set(0, 3.9, -5.05);
     wallMeshFront.position.set(-5.05, 3.9, 0);
 
-    this.world.addBody(wallBodyLeft, wallBodyFront);
+    wallBodyFront.position.copy(wallMeshFront);
+    wallBodyLeft.position.copy(wallMeshLeft);
+
+    this.world.addBody(wallBodyLeft);
+    this.world.addBody(wallBodyFront);
     this.walls.push(wallBodyLeft, wallBodyFront);
     this.scene.add(wallMeshLeft, wallMeshFront);
 
-    const floorGrid = new THREE.GridHelper(10, 10, 0x020f527, 0xe6e6e6ff);
+    const floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
     this.scene.add(floorGrid);
 
     this.floorMesh = floorMesh;
@@ -154,7 +170,7 @@ export default class Room {
     this.floorBody = floorBody;
   }
 
-  _setupEvents() {
+  _setupes() {
     if (this.button) {
       this.button.addEventListener('click', e => this.spawnFurniture(e));
     }
@@ -162,61 +178,85 @@ export default class Room {
     this.canvas.addEventListener('pointerdown', this._onPointerDown.bind(this));
     window.addEventListener(
       'pointermove',
-      lodash.throttle(this._onPointerMove, 100)
+      lodash.throttle(this._onPointerMove.bind(this), 50)
     );
     window.addEventListener('pointerup', this._onPointerUp.bind(this));
-    window.addEventListener('contextmenu', this._onKeyDown.bind(this));
+    window.addEventListener('contextmenu', this._rotateFurniture.bind(this));
   }
 
-  _onKeyDown(e) {
+  _rotateFurniture(e) {
     e.preventDefault();
-    if (this.dragging.furniture) {
-      if (this.dragging.furniture.rotationStep === undefined) {
-        this.dragging.furniture.rotationStep = 0;
-      }
+    const furniture = this.dragging.furniture;
+    if (!furniture) return;
 
-      this.dragging.furniture.rotationStep =
-        (this.dragging.furniture.rotationStep + 1) % 4;
-
-      const angle = THREE.MathUtils.degToRad(
-        90 * this.dragging.furniture.rotationStep
-      );
-
-      this.dragging.furniture.mesh.rotation.y = angle;
-
-      this.dragging.furniture.body.quaternion.setFromEuler(0, angle, 0);
+    if (furniture.rotationStep === undefined) {
+      furniture.rotationStep = 0;
     }
+
+    furniture.rotationStep = (furniture.rotationStep + 1) % 4;
+
+    const angle = THREE.MathUtils.degToRad(90 * furniture.rotationStep);
+
+    furniture.mesh.rotation.y = angle;
+    furniture.mesh.quaternion.setFromEuler(furniture.mesh.rotation);
+
+    furniture.body.angularVelocity.setZero();
+    furniture.body.angularDamping = 1;
+
+    furniture.body.quaternion.copy(furniture.mesh.quaternion);
+
+    const size = furniture.size;
+    [size.x, size.z] = [size.z, size.x];
+
+    furniture.body.shapes = [];
+    furniture.body.shapeOffsets = [];
+    furniture.body.shapeOrientations = [];
+
+    const newBoxShape = new CANNON.Box(
+      new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
+    );
+    furniture.body.addShape(newBoxShape);
+
+    furniture.mesh.position.copy(furniture.body.position);
   }
 
-  _onPointerDown(event) {
+  isDescendant(object, parent) {
+    if (object === parent) return true;
+    let current = object.parent;
+    while (current) {
+      if (current === parent) return true;
+      current = current.parent;
+    }
+    return false;
+  }
+
+  _onPointerDown(e) {
     const rect = this.canvas.getBoundingClientRect();
-    this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    this.pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    this.pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
     this.raycaster.setFromCamera(this.pointer, this.camera);
 
     const meshes = this.spawnedFurniture.map(f => f.mesh);
     const intersects = this.raycaster.intersectObjects(meshes);
 
-    console.log(meshes);
-    console.log(intersects);
-
     if (intersects.length > 0) {
-      function isDescendant(object, parent) {
-        if (object === parent) return true;
-        let current = object.parent;
-        while (current) {
-          if (current === parent) return true;
-          current = current.parent;
-        }
-        return false;
-      }
       this.dragging.furniture = this.spawnedFurniture.find(f => {
-        return isDescendant(intersects[0].object, f.mesh);
+        return this.isDescendant(intersects[0].object, f.mesh);
       });
+
+      if (this.dragging.furniture.category === 'декорація') {
+        const box = new THREE.Box3().setFromObject(
+          this.dragging.furniture.mesh
+        );
+        this.dragging.furniture.mesh.position.y -= box.min.y;
+        this.dragging.furniture.body.position.copy(
+          this.dragging.furniture.mesh.position
+        );
+      }
+
       this.controls.enabled = false;
 
-      console.log(this.dragging);
       this.raycaster.ray.intersectPlane(this.plane, this.intersectPoint);
       this.dragging.offset.copy(this.dragging.furniture.body.position);
     }
@@ -226,12 +266,12 @@ export default class Room {
     );
   }
 
-  _onPointerMove(event) {
+  _onPointerMove(e) {
     if (!this.dragging.furniture) return;
 
     const rect = this.canvas.getBoundingClientRect();
-    this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    this.pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    this.pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     this.raycaster.setFromCamera(this.pointer, this.camera);
 
     if (this.raycaster.ray.intersectPlane(this.plane, this.intersectPoint)) {
@@ -252,6 +292,7 @@ export default class Room {
       const body = this.dragging.furniture.body;
 
       const oldPos = body.position.clone();
+
       body.position.x = newPos.x;
       body.position.y = newPos.y;
 
@@ -259,16 +300,25 @@ export default class Room {
 
       this.spawnedFurniture.forEach(f => {
         if (f.body === body) return;
-
-        if (this.aabbIntersect(body, f.body)) isCollision = true;
+        if (
+          this.dragging.furniture.category === 'декорація' ||
+          f.category === 'декорація'
+        )
+          return;
+        if (this.aabbIntersect(body, f.body, { ignoreY: true })) {
+          isCollision = true;
+        }
       });
 
       this.walls.forEach(wall => {
-        if (this.aabbIntersect(body, wall)) isCollision = true;
+        if (this.aabbIntersect(body, wall, { ignoreY: true })) {
+          isCollision = true;
+        }
       });
 
       if (isCollision) {
         body.position.copy(oldPos);
+        return;
       } else {
         this.dragging.furniture.mesh.position.copy(newPos);
         this.dragging.furniture.body.position.copy(newPos);
@@ -284,11 +334,50 @@ export default class Room {
       this.controls.enabled = true;
       this.dragging.furniture.body.velocity.setZero();
       this.dragging.furniture.body.angularVelocity.setZero();
+
+      if (this.dragging.furniture.category === 'декорація') {
+        this.snapOnTop(this.dragging.furniture);
+      }
+
       this.dragging.furniture = null;
     }
   }
 
-  aabbIntersect(bodyA, bodyB) {
+  snapOnTop(furniture) {
+    const body = furniture.body;
+
+    const underCandidates = this.spawnedFurniture.filter(f => {
+      if (f === furniture) return false;
+      if (f.category === 'декорація') return false;
+      return this.aabbIntersect(body, f.body, { ignoreY: true });
+    });
+
+    if (underCandidates.length === 0) return;
+
+    let best = null;
+    let minYDiff = Infinity;
+
+    underCandidates.forEach(f => {
+      const topY = f.body.position.y + f.size.y / 2;
+      const bottomY = body.position.y - furniture.size.y / 2;
+
+      const diff = bottomY - topY;
+      if (diff <= 0 && Math.abs(diff) < minYDiff) {
+        minYDiff = Math.abs(diff);
+        best = f;
+      }
+    });
+
+    if (best) {
+      const topY = best.body.position.y + best.size.y / 2;
+      const newY = topY + furniture.size.y / 2;
+
+      body.position.y = newY;
+      furniture.mesh.position.y = newY;
+    }
+  }
+
+  aabbIntersect(bodyA, bodyB, options = {}) {
     const shapeA = bodyA.shapes[0];
     const shapeB = bodyB.shapes[0];
 
@@ -308,14 +397,11 @@ export default class Room {
       aabbB.max
     );
 
-    return (
-      aabbA.min.x <= aabbB.max.x &&
-      aabbA.max.x >= aabbB.min.x &&
-      aabbA.min.y <= aabbB.max.y &&
-      aabbA.max.y >= aabbB.min.y &&
-      aabbA.min.z <= aabbB.max.z &&
-      aabbA.max.z >= aabbB.min.z
-    );
+    const overlapX = aabbA.min.x <= aabbB.max.x && aabbA.max.x >= aabbB.min.x;
+    const overlapY = aabbA.min.y <= aabbB.max.y && aabbA.max.y >= aabbB.min.y;
+    const overlapZ = aabbA.min.z <= aabbB.max.z && aabbA.max.z >= aabbB.min.z;
+
+    return overlapX && (options.ignoreY ? true : overlapY) && overlapZ;
   }
 
   spawnFurniture(e) {
@@ -330,19 +416,27 @@ export default class Room {
       const box = new THREE.Box3().setFromObject(mesh);
       const size = new THREE.Vector3();
       box.getSize(size);
-
       const center = new THREE.Vector3();
       box.getCenter(center);
-      mesh.position.sub(center);
 
+      // Центруємо низ щоб був на y = 0 в незалежності від pivot`у(нижньої точки моделі)
+      mesh.position.sub(center);
+      mesh.position.y += size.y / 2;
+
+      // Body так само, з допомогою size.y / 2 піднімаємо його трішки вищє
       const body = new CANNON.Body({ mass: 0 });
       const shape = new CANNON.Box(
         new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
       );
-      body.position.set(0, -box.min.y, 0);
       body.addShape(shape);
+      body.position.set(0, size.y / 2, 0);
+
       this.world.addBody(body);
 
+      // ПЕРЕСЧИТАЙ box после смещений!
+      const newBox = new THREE.Box3().setFromObject(mesh);
+
+      // Запушуємо всі головні частини в массив з меблями
       this.spawnedFurniture.push({
         mesh,
         body,
@@ -372,8 +466,11 @@ export default class Room {
   }
 
   _onResize() {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.width = this.container.clientWidth;
+    this.height = this.container.clientHeight;
+
+    this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(this.width, this.height);
   }
 }

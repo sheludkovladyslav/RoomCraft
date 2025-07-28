@@ -13,14 +13,16 @@ body.dark {
   .legend__info {
     background-color: getDarkColors('background-legent-dark');
   }
+
   .show {
     background-color: getDarkColors('background-legent-dark');
+
     &__svg {
       fill: getDarkColors('textcolor-legent');
     }
   }
-}
 
-.menu {
-  background-color: rgba(82, 82, 82, 0.74);
+  .menu {
+    background-color: rgba(82, 82, 82, 0.74);
+  }
 }

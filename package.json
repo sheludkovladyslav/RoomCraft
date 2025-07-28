@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "cannon-es": "^0.20.0",
+    "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "three": "^0.178.0"
   },

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
+import lodash from 'lodash';
 import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
@@ -40,6 +41,7 @@ export default class Room {
     this.button = button;
     this.furnitureList = furnitureList;
     this.glb = null;
+    this.walls = [];
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
@@ -103,14 +105,26 @@ export default class Room {
     floorMesh.position.y = -0.05;
     this.scene.add(floorMesh);
 
-    const wallGeometry = new THREE.BoxGeometry(10, 8, 0.1);
+    const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
+    const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
     const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    const wallMesh1 = new THREE.Mesh(wallGeometry, wallMaterial);
-    const wallMesh2 = new THREE.Mesh(wallGeometry, wallMaterial);
-    wallMesh1.position.set(0, 3.9, -5.05);
-    wallMesh2.position.set(-5.05, 3.9, 0);
-    wallMesh2.rotation.y = Math.PI / 2;
-    this.scene.add(wallMesh1, wallMesh2);
+
+    const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
+    const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
+
+    const wallShape = new CANNON.Box(new CANNON.Vec3(10, 8, 0.1));
+    const wallBodyLeft = new CANNON.Body({ mass: 0 });
+    const wallBodyFront = new CANNON.Body({ mass: 0 });
+
+    wallBodyLeft.addShape(wallShape);
+    wallBodyFront.addShape(wallShape);
+
+    wallMeshLeft.position.set(0, 3.9, -5.05);
+    wallMeshFront.position.set(-5.05, 3.9, 0);
+
+    this.world.addBody(wallBodyLeft, wallBodyFront);
+    this.walls.push(wallBodyLeft, wallBodyFront);
+    this.scene.add(wallMeshLeft, wallMeshFront);
 
     const floorGrid = new THREE.GridHelper(10, 10, 0x020f527, 0xe6e6e6ff);
     this.scene.add(floorGrid);
@@ -146,7 +160,10 @@ export default class Room {
     }
 
     this.canvas.addEventListener('pointerdown', this._onPointerDown.bind(this));
-    window.addEventListener('pointermove', this._onPointerMove.bind(this));
+    window.addEventListener(
+      'pointermove',
+      lodash.throttle(this._onPointerMove, 100)
+    );
     window.addEventListener('pointerup', this._onPointerUp.bind(this));
     window.addEventListener('contextmenu', this._onKeyDown.bind(this));
   }
@@ -220,22 +237,45 @@ export default class Room {
     if (this.raycaster.ray.intersectPlane(this.plane, this.intersectPoint)) {
       let newPos = this.intersectPoint.clone().sub(this.dragging.offset);
 
-      newPos.x = Math.round(newPos.x / this.gridSize) * this.gridSize;
-      newPos.z = Math.round(newPos.z / this.gridSize) * this.gridSize;
+      const halfSizeX = this.dragging.furniture.size.x / 2;
+      const halfSizeZ = this.dragging.furniture.size.z / 2;
 
       newPos.x = Math.max(
-        this.bounds.xMin,
-        Math.min(this.bounds.xMax, newPos.x)
+        this.bounds.xMin + halfSizeX,
+        Math.min(this.bounds.xMax - halfSizeX, newPos.x)
       );
-
       newPos.z = Math.max(
-        this.bounds.zMin,
-        Math.min(this.bounds.zMax, newPos.z)
+        this.bounds.zMin + halfSizeZ,
+        Math.min(this.bounds.zMax - halfSizeZ, newPos.z)
       );
 
-      this.dragging.furniture.body.position.x = newPos.x;
-      this.dragging.furniture.body.position.z = newPos.z;
-      this.dragging.furniture.body.velocity.setZero();
+      const body = this.dragging.furniture.body;
+
+      const oldPos = body.position.clone();
+      body.position.x = newPos.x;
+      body.position.y = newPos.y;
+
+      let isCollision = false;
+
+      this.spawnedFurniture.forEach(f => {
+        if (f.body === body) return;
+
+        if (this.aabbIntersect(body, f.body)) isCollision = true;
+      });
+
+      this.walls.forEach(wall => {
+        if (this.aabbIntersect(body, wall)) isCollision = true;
+      });
+
+      if (isCollision) {
+        body.position.copy(oldPos);
+      } else {
+        this.dragging.furniture.mesh.position.copy(newPos);
+        this.dragging.furniture.body.position.copy(newPos);
+      }
+
+      body.position.set(newPos.x, oldPos.y, newPos.z);
+      body.velocity.setZero();
     }
   }
 
@@ -249,16 +289,32 @@ export default class Room {
   }
 
   aabbIntersect(bodyA, bodyB) {
-    const aabbA = bodyA.shapes[0].halfExtents;
-    const aabbB = bodyB.shapes[0].halfExtents;
+    const shapeA = bodyA.shapes[0];
+    const shapeB = bodyB.shapes[0];
 
-    const posA = bodyA.position;
-    const posB = bodyB.position;
+    const aabbA = { min: new CANNON.Vec3(), max: new CANNON.Vec3() };
+    const aabbB = { min: new CANNON.Vec3(), max: new CANNON.Vec3() };
+
+    shapeA.calculateWorldAABB(
+      bodyA.position,
+      bodyA.quaternion,
+      aabbA.min,
+      aabbA.max
+    );
+    shapeB.calculateWorldAABB(
+      bodyB.position,
+      bodyB.quaternion,
+      aabbB.min,
+      aabbB.max
+    );
 
     return (
-      Math.abs(posA.x - posB.x) <= aabbA.x + aabbB.x &&
-      Math.abs(posA.y - posB.y) <= aabbA.y + aabbB.y &&
-      Math.abs(posA.z - posB.z) <= aabbA.z + aabbB.z
+      aabbA.min.x <= aabbB.max.x &&
+      aabbA.max.x >= aabbB.min.x &&
+      aabbA.min.y <= aabbB.max.y &&
+      aabbA.max.y >= aabbB.min.y &&
+      aabbA.min.z <= aabbB.max.z &&
+      aabbA.max.z >= aabbB.min.z
     );
   }
 
@@ -280,8 +336,6 @@ export default class Room {
       mesh.position.sub(center);
 
       const body = new CANNON.Body({ mass: 0 });
-      body.linearDamping = 0.5;
-      body.angularDamping = 0.5;
       const shape = new CANNON.Box(
         new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
       );
@@ -289,7 +343,12 @@ export default class Room {
       body.addShape(shape);
       this.world.addBody(body);
 
-      this.spawnedFurniture.push({ mesh, body, size });
+      this.spawnedFurniture.push({
+        mesh,
+        body,
+        size,
+        category: furniture.category,
+      });
     });
   }
 

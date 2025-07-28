@@ -21,7 +21,7 @@ export default [
     name: 'Рослина',
     image: '',
     glb: plant,
-    category: 'decoraion',
+    category: 'decoration',
   },
   {
     key: 'wardrope',

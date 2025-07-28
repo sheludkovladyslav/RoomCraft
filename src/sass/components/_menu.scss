@@ -109,7 +109,7 @@
 
 @media (min-width: 1024px) {
   .menu {
-    max-width: 401px;
+    min-width: 401px;
 
     &-filter {
       column-gap: 8px;

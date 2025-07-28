@@ -1,22 +1,22 @@
-const legend = document.querySelector('.legend');
+const legendShow = document.querySelector('.legend');
 
 let offsetX, offsetY, isDragging = false;
 
-legend.addEventListener('mousedown', (e) => {
+legendShow.addEventListener('mousedown', (e) => {
     isDragging = true;
-    offsetX = e.clientX - legend.offsetLeft;
-    offsetY = e.clientY - legend.offsetTop;
-    legend.style.cursor = 'grabbing';
+    offsetX = e.clientX - legendShow.offsetLeft;
+    offsetY = e.clientY - legendShow.offsetTop;
+    legendShow.style.cursor = 'grabbing';
 });
 
 document.addEventListener('mousemove', (e) => {
     if (isDragging) {
-        legend.style.left = (e.clientX - offsetX) + 'px';
-        legend.style.top = (e.clientY - offsetY) + 'px';
+        legendShow.style.left = (e.clientX - offsetX) + 'px';
+        legendShow.style.top = (e.clientY - offsetY) + 'px';
     }
 });
 
 document.addEventListener('mouseup', () => {
     isDragging = false;
-    legend.style.cursor = 'grab';
+    legendShow.style.cursor = 'grab';
 });

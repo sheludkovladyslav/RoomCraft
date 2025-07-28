@@ -14,14 +14,14 @@ export default [
     name: 'Диван',
     image: '',
     glb: sofa,
-    category: 'futniture',
+    category: 'furniture',
   },
   {
     key: 'plant',
     name: 'Рослина',
     image: '',
     glb: plant,
-    category: 'decoraion',
+    category: 'decoration',
   },
   {
     key: 'wardrope',

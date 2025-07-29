@@ -11,8 +11,17 @@ legendShow.addEventListener('mousedown', (e) => {
 
 document.addEventListener('mousemove', (e) => {
     if (isDragging) {
-        legendShow.style.left = (e.clientX - offsetX) + 'px';
-        legendShow.style.top = (e.clientY - offsetY) + 'px';
+        const maxX = window.innerWidth - legendShow.offsetWidth;
+        const maxY = window.innerHeight - legendShow.offsetHeight;
+
+        let newX = e.clientX - offsetX;
+        let newY = e.clientY - offsetY;
+
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+
+        legendShow.style.left = newX + 'px';
+        legendShow.style.top = newY + 'px';
     }
 });
 

@@ -1,5 +1,5 @@
 .header {
-  padding: 23px 0 280px;
+  padding: 23px 0 315px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -7,7 +7,6 @@
 
   @media (min-width: 768px) {
     padding: 49px 0 35px;
-
   }
 }
 
@@ -62,7 +61,6 @@
 }
 
 .button {
-
   &__save,
   &__load,
   &__delete {
@@ -163,7 +161,6 @@
   }
 
   .button {
-
     &__save,
     &__load,
     &__delete {

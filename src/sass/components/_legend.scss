@@ -3,10 +3,12 @@
   cursor: grab;
   max-width: 302px;
   width: 100%;
-  z-index: 12;
 
+  z-index: 12;
   top: 87px;
-  left: 9px;
+  top: 87px;
+  left: 50%;
+  transform: translateX(-50%);
 
   @media (min-width: 768px) {
     top: 13px;

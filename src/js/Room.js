@@ -14,18 +14,7 @@ export const roomInitHtml = () => {
   const roomHtml = `
 
  <ul data-list class="furniture-list">
- ${furnitureList
-   .map(
-     f =>
-       `<li class="furniture">
-          <button class="furniture__spawn" data-spawn="${f.key}">
-          <h3 class="furniture__name">Назва${f.name}</h3>
-          <p class="furniture__text">Категорія: ${f.category}</p>
-          </button>
-        </li>
-      `
-   )
-   .join('')}
+ 
  </ul>
  <div class="room__playground">
   <canvas id="canvas"></canvas>

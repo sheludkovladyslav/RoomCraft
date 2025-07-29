@@ -7,7 +7,7 @@ const menuFilter = document.getElementById('menuFilter');
 const categoryMap = {
   декорації: 'Декорації',
   меблі: 'Меблі',
-  електроніка: 'electronics',
+  електроніка: 'Електроніка',
   'ін.': 'all',
 };
 

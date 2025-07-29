@@ -34,7 +34,7 @@ export default [
   {
     key: 'sofa',
     name: 'Диван',
-    image: '#',
+    image: '/public/images/furniture-images/sofa.jpg',
     glb: sofa,
     category: 'Меблі',
     type: 'sofa',
@@ -98,7 +98,7 @@ export default [
   {
     key: 'twoYarusBed',
     name: 'Модель 1',
-    image: '#',
+    image: '/public/images/furniture-images/twoyarusbed.jpg',
     glb: model1,
     category: 'Меблі',
     type: 'bed',
@@ -130,7 +130,7 @@ export default [
   {
     key: 'model5',
     name: 'Модель 5',
-    image: '#',
+    image: '/public/images/furniture-images/modal5.jpg',
     glb: model5,
     category: 'Невідомо',
     type: 'decoration',
@@ -218,7 +218,7 @@ export default [
   {
     key: 'modern_sofa',
     name: 'Сучасний диван',
-    image: '#',
+    image: '/public/images/furniture-images/modern_sofa.jpg',
     glb: modern_sofa,
     category: 'Меблі',
     type: 'sofa',
@@ -250,7 +250,7 @@ export default [
   {
     key: 'industrialTable',
     name: 'Індустріальний стіл',
-    image: '#',
+    image: '/public/images/furniture-images/industrial_table.jpg',
     glb: industrialTable,
     category: 'Меблі',
     type: 'table',
@@ -266,7 +266,7 @@ export default [
   {
     key: 'luxurySofa',
     name: 'Меблі',
-    image: '#',
+    image: '/public/images/furniture-images/luxurysofa.jpg',
     glb: furniture,
     category: 'Меблі',
     type: 'sofa',

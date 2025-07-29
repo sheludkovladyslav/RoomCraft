@@ -9,7 +9,7 @@ const settingsHandler = event => {
   const instance = basicLightbox.create(`
     <div class="modal">
       <div class="grid">
-        <div class="grid__toggler toggler ">
+        <div class="grid__toggler toggler active">
           <div class="toggler__circle"></div>
         </div>
         <p class="grid__label">Показати сітку</p>

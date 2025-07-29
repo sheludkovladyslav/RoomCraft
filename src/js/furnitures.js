@@ -96,3 +96,4 @@ export default [
   { key: 'luxurySofa', name: 'Меблі', image: luxurySofaImg, glb: furniture, category: 'Меблі', type: 'sofa' },
   { key: 'folding_table', name: 'Складаний стіл', image: foldingTableImg, glb: folding_table, category: 'Меблі', type: 'table' },
 ];
+

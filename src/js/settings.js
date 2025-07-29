@@ -51,9 +51,9 @@ const settingsHandler = event => {
 
   const hideGrid = btn => {
     if (btn.classList.contains('active')) {
-      localStorage.setItem('grid', 'gridOff');
-    } else {
       localStorage.setItem('grid', 'gridOn');
+    } else {
+      localStorage.setItem('grid', 'gridOff');
     }
   };
 

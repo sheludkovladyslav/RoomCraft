@@ -1,9 +1,48 @@
 import * as basicLightbox from 'basiclightbox';
 import { roomInstance } from './Room';
+import { success, error  } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 const settings = document.querySelector('.settings');
+
+
+
+function saveRoom() {
+  success({
+    text: '🏠 Кімнату успішно збережено!',
+    delay: 2500,
+    addClass: 'custom-alert',
+    closerHover: true,
+    sticker: false,
+    width: '350px',
+  });
+}
+
+function roomLoaded() {
+  success({
+    text: '✅ Кімнату успішно завантажено!',
+    delay: 2500,
+    addClass: 'load-alert',
+    closerHover: true,
+    sticker: false,
+    width: '350px',
+  });
+}
+
+function deleteRoom() {
+  error({
+    text: '❌ Кімнату успішно видалено!',
+    delay: 2500,
+    addClass: 'deleted-alert',
+    closerHover: true,
+    sticker: false,
+    width: '350px',
+  });
+}
+
 
 const settingsHandler = event => {
   const instance = basicLightbox.create(`
@@ -68,14 +107,17 @@ const settingsHandler = event => {
 
   saveBtn.addEventListener('click', () => {
     roomInstance.saveRoomState();
+    saveRoom()
   });
 
   loadBtn.addEventListener('click', () => {
     roomInstance.loadRoomState();
+    roomLoaded()
   });
 
   deleteBtn.addEventListener('click', () => {
     roomInstance.deleteRoomState();
+    deleteRoom()
   });
 
   toggleButton.addEventListener('click', () => {

@@ -11,6 +11,7 @@ function startDrag(x, y) {
 
 function moveDrag(x, y) {
     if (!isDragging) return;
+    if (window.innerWidth < 768) return;
 
     const maxX = window.innerWidth - legendShow.offsetWidth;
     const maxY = window.innerHeight - legendShow.offsetHeight;

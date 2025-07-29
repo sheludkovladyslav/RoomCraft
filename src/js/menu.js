@@ -41,8 +41,8 @@ const renderCards = (category = 'all') => {
 
     slidesHTML += `
       <ul class="swiper-slide">
-        <li class="menu-cards-card">
-          <button class="furniture__spawn" data-spawn="${item1.key}">
+        <li class="menu-cards-card" data-spawn="${item1.key}">
+          <button class="furniture__spawn" >
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">${item1.name}</h3>
             <p class="menu-cards-card__category">Категорія: ${
@@ -54,8 +54,8 @@ const renderCards = (category = 'all') => {
         ${
           item2
             ? `
-        <li class="menu-cards-card">
-          <button class="furniture__spawn" data-spawn="${item2.key}">
+        <li class="menu-cards-card" data-spawn="${item2.key}">
+          <button class="furniture__spawn" >
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">${item2.name}</h3>
             <p class="menu-cards-card__category">Категорія: ${item2.category}</p>

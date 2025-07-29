@@ -3,8 +3,10 @@ import Swiper from 'swiper';
 
 const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
-
 const categoryMap = {
+  декорації: 'decoration',
+  меблі: 'furniture',
+  електроніка: 'electronics',
   декорації: 'decoration',
   меблі: 'furniture',
   електроніка: 'electronics',
@@ -40,8 +42,8 @@ const renderCards = (category = 'all') => {
     const item2 = filteredItems[i + 1];
 
     slidesHTML += `
-      <div class="swiper-slide">
-        <article class="menu-cards-card">
+      <ul class="swiper-slide">
+        <li class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item1.key}">
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">${item1.name}</h3>
@@ -49,18 +51,18 @@ const renderCards = (category = 'all') => {
               item1.category
             }</p>
           </button>
-        </article>
+        </li>
 
         ${
           item2
             ? `
-        <article class="menu-cards-card">
+        <li class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item2.key}">
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">${item2.name}</h3>
             <p class="menu-cards-card__category">Категорія: ${item2.category}</p>
           </button>
-        </article>`
+        </li>`
             : ''
         }
       </div>
@@ -70,9 +72,9 @@ const renderCards = (category = 'all') => {
   wrapper.innerHTML = slidesHTML;
   initSwiper();
 };
-
 menuFilter.addEventListener('click', e => {
   const li = e.target.closest('.menu-filter__list');
+  if (!li) return;
 
   document
     .querySelectorAll('.menu-filter__list')

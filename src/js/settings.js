@@ -9,7 +9,7 @@ const settingsHandler = event => {
   const instance = basicLightbox.create(`
     <div class="modal">
       <div class="grid">
-        <div class="grid__toggler toggler active">
+        <div class="grid__toggler toggler ">
           <div class="toggler__circle"></div>
         </div>
         <p class="grid__label">Показати сітку</p>
@@ -56,6 +56,15 @@ const settingsHandler = event => {
       localStorage.setItem('grid', 'gridOff');
     }
   };
+  const toggleButton = modalElement.querySelector('.toggler');
+
+  if (localStorage && localStorage.getItem('grid') === 'gridOn') {
+    toggleButton.classList.add('active');
+  }
+
+  if (localStorage && localStorage.getItem('grid') === 'gridOff') {
+    toggleButton.classList.remove('active');
+  }
 
   saveBtn.addEventListener('click', () => {
     roomInstance.saveRoomState();
@@ -69,7 +78,6 @@ const settingsHandler = event => {
     roomInstance.deleteRoomState();
   });
 
-  const toggleButton = modalElement.querySelector('.toggler');
   toggleButton.addEventListener('click', () => {
     toggleButton.classList.toggle('active');
     hideGrid(toggleButton);

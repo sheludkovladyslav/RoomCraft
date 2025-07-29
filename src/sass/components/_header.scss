@@ -1,9 +1,14 @@
 .header {
-  padding: 49px 35px;
+  padding: 23px 0 280px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 40px;
+
+  @media (min-width: 768px) {
+    padding: 49px 0 35px;
+
+  }
 }
 
 .settings {
@@ -57,6 +62,7 @@
 }
 
 .button {
+
   &__save,
   &__load,
   &__delete {
@@ -106,9 +112,11 @@
 
     transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
   }
+
   &.active {
     background-color: getLightColors('background-secondary-light');
   }
+
   &.active .toggler__circle {
     transform: translateX(48px);
   }
@@ -155,6 +163,7 @@
   }
 
   .button {
+
     &__save,
     &__load,
     &__delete {

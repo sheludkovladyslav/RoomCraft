@@ -1,4 +1,9 @@
 .main {
-  display: flex;
-  gap: 27px;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+  @media (min-width: 1024px) {
+    gap: 27px;
+    flex-direction: row;
+  }
 }

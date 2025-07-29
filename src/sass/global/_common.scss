@@ -1,7 +1,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 body {
-  font-family: getFonts('Montserrat');
+  font-family: getFont('Montserrat');
   font-weight: 400;
   font-size: 14px;
   line-height: 1.214;
@@ -10,8 +10,16 @@ body {
 body.dark {
   background-color: #6b6b6b;
 
-  .legend {
+  .legend__info {
     background-color: getDarkColors('background-legent-dark');
+  }
+
+  .show {
+    background-color: getDarkColors('background-legent-dark');
+
+    &__svg {
+      fill: getDarkColors('textcolor-legent');
+    }
   }
 
   .menu {

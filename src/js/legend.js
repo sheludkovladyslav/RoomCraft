@@ -17,6 +17,9 @@ const legendOpen = () => {
         closeButton.style.opacity = '1';
       });
     }, 400);
+  } else {
+    showButton.style.display = 'none'
+    closeButton.style.display = 'none'
   }
 };
 

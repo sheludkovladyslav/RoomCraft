@@ -1,164 +1,195 @@
-@import "../../node_modules/swiper/swiper-bundle.css";
+@import '../../node_modules/swiper/swiper-bundle.css';
 
+body {
+  height: 100%;
+}
 
 .menu {
-    border-radius: 49px;
-    background: rgba(0, 65, 125, 0.30);
-    max-width: 320px;
-    max-height: 997px;
-    padding: 20px 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  border-radius: 49px;
+  background: rgba(0, 65, 125, 0.3);
+  max-width: 320px;
+  max-height: 997px;
+  width: 100%;
+  padding-bottom: 15px;
+  height: 100%;
 
+  &-filter {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    align-items: center;
+    border-radius: 20px;
+    background: getLightColors('background-primery-light');
+    padding: 8px;
 
+    &__list {
+      flex-shrink: 0;
+      border-radius: 10px;
+      border: 1px solid #686868;
+      background: getLightColors('background-primery-light');
+      color: getLightColors('textcolor-primary');
+      font-family: getFonts('Montserrat');
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding: 3.4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.9s ease;
+      cursor: pointer;
+
+      &.active {
+        background: getLightColors('button-select');
+        color: getLightColors('background-primery-light');
+      }
+    }
+  }
+
+  &-cards {
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+
+    &-card {
+      border-radius: 18px;
+      background: getLightColors('background-primery-light');
+      box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
+      padding: 10px;
+
+      &__img {
+        width: 117px;
+        flex-shrink: 0;
+        aspect-ratio: 147/128;
+      }
+
+      &__title {
+        color: getLightColors('textcolor-primary');
+        font-family: getFonts('Noto-sans');
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      &__category {
+        color: getLightColors('textcolor-secondary');
+        font-family: getFonts('Noto-sans');
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        text-align: left;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.furniture__spawn {
+  width: 100%;
+}
+
+.filter__wrapper {
+  padding: 15px 20px 0px 20px;
+}
+
+.menu-cards-card {
+  transition: transform 0.3s ease;
+
+  &.active {
+    transform: scale(1.05);
+    z-index: 1;
+  }
+}
+.swiper {
+  height: 100%;
+  padding: 15px 20px 0 20px;
+  border-radius: 20px;
+}
+
+.swiper-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  height: auto !important;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    max-width: 413px;
 
     &-filter {
-        display: flex;
-        justify-content: center;
-        gap: 7px;
-        align-items: center;
-        border-radius: 20px;
-        background: getLightColors('background-primery-light');
-        padding: 8px;
+      column-gap: 11px;
 
-        &__list {
-            flex-shrink: 0;
-            border-radius: 10px;
-            border: 1px solid #686868;
-            background: getLightColors('background-primery-light');
-            color: getLightColors('textcolor-primary');
-            font-family: getFonts('Montserrat');
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            padding: 3.4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all .9s ease;
-            cursor: pointer;
-
-
-
-            &.active {
-                background: getLightColors('button-select');
-                color: getLightColors('background-primery-light');
-            }
-        }
+      &__list {
+        padding: 7px 16px;
+      }
     }
 
     &-cards {
-margin-top: 10px;
+      &-card {
+        padding: 16px;
 
-  .swiper-wrapper {
-    display: flex; // обов'язково для Swiper
+        &__title {
+          font-size: 18px;
+        }
+
+        &__img {
+          width: 152px;
+        }
+      }
+    }
   }
 
   .swiper-slide {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 10px;
+    grid-template-columns: 1fr 1fr; // 2 карточки в ряд
   }
-
-
-
-        &-card {
-            border-radius: 18px;
-            background: getLightColors('background-primery-light');
-            box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
-            padding: 10px;
-
-            &__img {
-                width: 117px;
-
-                flex-shrink: 0;
-                aspect-ratio: 147/128;
-            }
-
-            &__title {
-                color: getLightColors('textcolor-primary');
-                font-family: getFonts("Noto-sans");
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-                margin-top: 10px;
-            }
-
-            &__category {
-                color: getLightColors('textcolor-secondary');
-                font-family: getFonts("Noto-sans");
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
-            }
-        }
-    }
-}
-
-
-
-@media (min-width: 768px) {
-    .menu {
-        max-width: 413px;
-
-        &-filter {
-            column-gap: 11px;
-
-            &__list {
-                padding: 7px 16px;
-            }
-        }
-
-        &-cards {
-
-             .swiper-slide {
-      grid-template-columns: 1fr 1fr; // 2 карточки в ряд
-    }
-            &-card {
-                padding: 16px;
-
-                &__title {
-                    font-size: 18px;
-                }
-
-                &__img {
-                    width: 152px;
-                }
-            }
-        }
-    }
 }
 
 @media (min-width: 1024px) {
-    .menu {
-        min-width: 401px;
+  .menu {
+    min-width: 401px;
 
-        &-filter {
-            column-gap: 8px;
+    &-filter {
+      column-gap: 8px;
 
-            &__list {
-                padding: 7px 12px;
-                font-size: 14px;
-            }
-        }
-
-        &-cards {
-            &-card {
-                padding: 15px;
-
-                &__title {
-                    font-size: 15px;
-                }
-
-                &__img {
-                    width: 137px;
-                }
-
-                &__category {
-                    font-size: 12px;
-                }
-            }
-        }
+      &__list {
+        padding: 7px 12px;
+        font-size: 14px;
+      }
     }
+
+    &-cards {
+      &-card {
+        padding: 15px;
+
+        &__title {
+          font-size: 16px;
+        }
+
+        &__img {
+          width: 137px;
+        }
+
+        &__category {
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }

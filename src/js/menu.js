@@ -1,16 +1,13 @@
 import furnitureList from './furnitures.js';
 import Swiper from 'swiper';
 
-
-
-
-const menuCards = document.getElementById('menuCards')
+const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
 
 const categoryMap = {
-  'декорації': 'decoration',
-  'меблі': 'furniture',
-  'електроніка': 'electronics',
+  декорації: 'decoration',
+  меблі: 'furniture',
+  електроніка: 'electronics',
   'ін.': 'all',
 };
 
@@ -32,7 +29,9 @@ function initSwiper() {
 
 const renderCards = (category = 'all') => {
   const wrapper = document.getElementById('cardsWrapper');
-  const filteredItems = furnitureList.filter(item => category === 'all' || item.category === category);
+  const filteredItems = furnitureList.filter(
+    item => category === 'all' || item.category === category
+  );
 
   let slidesHTML = '';
 
@@ -45,19 +44,25 @@ const renderCards = (category = 'all') => {
         <article class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item1.key}">
             <div class="menu-cards-card__img"></div>
-            <h3 class="menu-cards-card__title">Name: ${item1.name}</h3>
-            <span class="menu-cards-card__category">Категорія: ${item1.category}</span>
+            <h3 class="menu-cards-card__title">${item1.name}</h3>
+            <p class="menu-cards-card__category">Категорія: ${
+              item1.category
+            }</p>
           </button>
         </article>
 
-        ${item2 ? `
+        ${
+          item2
+            ? `
         <article class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item2.key}">
             <div class="menu-cards-card__img"></div>
-            <h3 class="menu-cards-card__title">Name: ${item2.name}</h3>
-            <span class="menu-cards-card__category">Категорія: ${item2.category}</span>
+            <h3 class="menu-cards-card__title">${item2.name}</h3>
+            <p class="menu-cards-card__category">Категорія: ${item2.category}</p>
           </button>
-        </article>` : ''}
+        </article>`
+            : ''
+        }
       </div>
     `;
   }
@@ -66,17 +71,17 @@ const renderCards = (category = 'all') => {
   initSwiper();
 };
 
+menuFilter.addEventListener('click', e => {
+  const li = e.target.closest('.menu-filter__list');
 
+  document
+    .querySelectorAll('.menu-filter__list')
+    .forEach(el => el.classList.remove('active'));
 
-menuFilter.addEventListener('click', (e) => {
-    const li = e.target.closest('.menu-filter__list')
+  li.classList.add('active');
 
-     document.querySelectorAll('.menu-filter__list').forEach((el) => el.classList.remove('active'))
+  const category = categoryMap[li.textContent.trim().toLowerCase()] || 'all';
+  renderCards(category);
+});
 
-    li.classList.add('active')
-
-    const category = categoryMap[li.textContent.trim().toLowerCase()] || 'all'
-    renderCards(category)
-})
-
-renderCards()
+renderCards();

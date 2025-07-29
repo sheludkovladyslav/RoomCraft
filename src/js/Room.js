@@ -18,34 +18,7 @@ const CATEGORY_DIMENSIONS = new Map([
 export const roomInitHtml = () => {
   const roomContainer = document.querySelector('.room__container');
   const roomHtml = `
-  <aside class="room__menu menu">
-  <ul class="menu-filter">
-    <li class="menu-filter__item" data-filter="decoration">Декорації</li>
-    <li class="menu-filter__item" data-filter="furniture">Меблі</li>
-    <li class="menu-filter__item" data-filter="electronic">Електроніка</li>
-    <li class="menu-filter__item" data-filter="etc">ін.</li>
-  </ul>
-
-
-  <ul data-list class="menu-furnirute__list furniture-list">
-${furnitureList
-  .map(
-    f =>
-      `<li class="furniture-list__item" role="button" data-spawn="${f.key}">
-          <article class="furniture-list__content">
-            <div class="furniture-list__photo">
-              <img src="${f.image}" alt="${f.name}" class="furniture-list__image" hidden/>
-            </div>
-            <h3 class="furniture-list__name">${f.name}</h3>
-            <span class="furniture-list__category">Категорія: ${f.category}</span>
-           </article>
-        </li>
-      `
-  )
-  .join('')}
-      </ul>
-
-  </aside>
+  
   <div class="room__playground">
     <canvas class="playground"></canvas>
   </div>
@@ -255,7 +228,7 @@ export default class Room {
         return this.isDescendant(intersects[0].object, f.mesh);
       });
 
-      if (this.dragging.furniture.category === 'декорація') {
+      if (this.dragging.furniture.category.toLowerCase() === 'декорація') {
         const box = new THREE.Box3().setFromObject(
           this.dragging.furniture.mesh
         );
@@ -311,8 +284,8 @@ export default class Room {
       this.spawnedFurniture.forEach(f => {
         if (f.body === body) return;
         if (
-          this.dragging.furniture.category === 'декорація' ||
-          f.category === 'декорація'
+          this.dragging.furniture.category === 'Декорація' ||
+          f.category === 'Декорація'
         )
           return;
         if (this.aabbIntersect(body, f.body, { ignoreY: true })) {
@@ -345,7 +318,7 @@ export default class Room {
       this.dragging.furniture.body.velocity.setZero();
       this.dragging.furniture.body.angularVelocity.setZero();
 
-      if (this.dragging.furniture.category === 'декорація') {
+      if (this.dragging.furniture.category === 'Декорація') {
         this.snapOnTop(this.dragging.furniture);
       }
 
@@ -358,7 +331,7 @@ export default class Room {
 
     const underCandidates = this.spawnedFurniture.filter(f => {
       if (f === furniture) return false;
-      if (f.category === 'декорація') return false;
+      if (f.category === 'Декорація') return false;
       return this.aabbIntersect(body, f.body, { ignoreY: true });
     });
 

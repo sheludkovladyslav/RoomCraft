@@ -92,6 +92,8 @@ export default class Room {
     this._setupes();
     this._animate();
     this.gridCheck();
+
+    this._setupKeyboardShortcuts();
   }
 
   deleteRoomState() {
@@ -337,7 +339,7 @@ export default class Room {
         return this.isDescendant(intersects[0].object, f.mesh);
       });
 
-      if (this.dragging.furniture.category.toLowerCase() === 'декорація') {
+      if (this.dragging.furniture.category === 'Декорації') {
         const box = new THREE.Box3().setFromObject(
           this.dragging.furniture.mesh
         );
@@ -393,8 +395,8 @@ export default class Room {
       this.spawnedFurniture.forEach(f => {
         if (f.body === body) return;
         if (
-          this.dragging.furniture.category === 'Декорація' ||
-          f.category === 'Декорація'
+          this.dragging.furniture.category === 'Декорації' ||
+          f.category === 'Декорації'
         )
           return;
         if (this.aabbIntersect(body, f.body, { ignoreY: true })) {
@@ -427,11 +429,50 @@ export default class Room {
       this.dragging.furniture.body.velocity.setZero();
       this.dragging.furniture.body.angularVelocity.setZero();
 
-      if (this.dragging.furniture.category === 'Декорація') {
+      if (this.dragging.furniture.category === 'Декорації') {
         this.snapOnTop(this.dragging.furniture);
       }
 
       this.dragging.furniture = null;
+    }
+  }
+
+  _setupKeyboardShortcuts() {
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        if (this.dragging.furniture) {
+          this.removeFurniture(this.dragging.furniture);
+          this.dragging.furniture = null;
+        } else {
+          alert('Немає вибраної мебелі для видалення!');
+        }
+      }
+    });
+  }
+
+  removeFurniture(furniture) {
+    if (!furniture) return;
+
+    this.scene.remove(furniture.mesh);
+
+    furniture.mesh.traverse(child => {
+      if (child.isMesh) {
+        child.geometry.dispose();
+        if (Array.isArray(child.material)) {
+          child.material.forEach(mat => mat.dispose());
+        } else {
+          child.material.dispose();
+        }
+      }
+    });
+
+    this.world.removeBody(furniture.body);
+    if (!this.controls.enabled) this.controls.enabled = true;
+
+    const index = this.spawnedFurniture.indexOf(furniture);
+
+    if (index !== -1) {
+      this.spawnedFurniture.splice(index, 1);
     }
   }
 
@@ -440,7 +481,7 @@ export default class Room {
 
     const underCandidates = this.spawnedFurniture.filter(f => {
       if (f === furniture) return false;
-      if (f.category === 'Декорація') return false;
+      if (f.category === 'Декорації') return false;
       return this.aabbIntersect(body, f.body, { ignoreY: true });
     });
 
@@ -562,9 +603,6 @@ export default class Room {
       const body = new CANNON.Body({ mass: 0 });
       body.addShape(shape);
       this.world.addBody(body);
-
-      // const boxHelper = new THREE.Box3Helper(scaledBox, 0xff0000);
-      // this.scene.add(boxHelper);
 
       this.spawnedFurniture.push({
         mesh: group,

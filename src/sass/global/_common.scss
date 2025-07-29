@@ -32,8 +32,13 @@ body.dark {
 }
 
 .main-container {
-  padding: 0 15px;
   margin: 0 auto;
   min-width: 320px;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    padding: 0 15px;
+  }
 }

@@ -4,6 +4,7 @@ import lodash from 'lodash';
 import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+import floorGlb from '/public/models/floor.glb';
 
 const CATEGORY_DIMENSIONS = new Map([
   ['sofa', 4.5],
@@ -206,10 +207,17 @@ export default class Room {
     light.position.set(5, 10, 5);
     this.scene.add(light);
 
+    this.loader.load(floorGlb, gltf => {
+      const floorModel = gltf.scene;
+      floorModel.position.y = -0.005;
+      floorModel.scale.set(1.63, 10, 1.63);
+      this.scene.add(floorModel);
+    });
+
     const floorGeometry = new THREE.BoxGeometry(10, 0.1, 10);
     const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xeeeeee });
     const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
-    floorMesh.position.y = -0.05;
+    floorMesh.position.y = -0.06;
     this.scene.add(floorMesh);
 
     const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
@@ -227,6 +235,7 @@ export default class Room {
     this.scene.add(wallMeshLeft, wallMeshFront);
 
     this.floorGrid = new THREE.GridHelper(10, 10, 0x444444, 0x444444);
+
     this.scene.add(this.floorGrid);
 
     this.floorMesh = floorMesh;

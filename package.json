@@ -30,6 +30,7 @@
     "cannon-es": "^0.20.0",
     "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
+    "pnotify": "^5.2.0",
     "swiper": "^11.2.10",
     "three": "^0.178.0"
   },

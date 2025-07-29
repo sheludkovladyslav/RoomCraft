@@ -98,7 +98,7 @@ export default class Room {
 
   deleteRoomState() {
     localStorage.removeItem('roomState');
-    alert('Кімнату видалено, дякуємо за користування Room Craft!');
+    // alert('Кімнату видалено, дякуємо за користування Room Craft!');
   }
 
   gridCheck() {

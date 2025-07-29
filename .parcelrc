@@ -11,6 +11,8 @@
     "*.svg": []
   },
   "transformers": {
+    "*.jpg": ["@parcel/transformer-raw"],
+    "*.jpeg": ["@parcel/transformer-raw"],
     "*.glb": ["@parcel/transformer-raw"]
   }
 }

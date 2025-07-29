@@ -85,11 +85,25 @@ body {
       background: getLightColors('background-primery-light');
       box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
       padding: 10px;
+      max-height: 186px;
+
+
 
       &__img {
-        width: 117px;
+        max-width: 117px;
         flex-shrink: 0;
         aspect-ratio: 147/128;
+        margin: 0 auto;
+        border-radius: 10px;
+        height: 120px;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          max-width: 100%;
+          border-radius: 10px;
+          height: 120px;
+        }
       }
 
       &__title {
@@ -167,13 +181,14 @@ body {
     &-cards {
       &-card {
         padding: 16px;
+        max-height: 201px;
 
         &__title {
           font-size: 18px;
         }
 
         &__img {
-          width: 152px;
+          max-width: 152px;
         }
       }
     }
@@ -196,6 +211,7 @@ body {
         font-size: 14px;
       }
     }
+
     .swiper {
       padding: 15px 20px 0 20px;
     }
@@ -203,13 +219,14 @@ body {
     &-cards {
       &-card {
         padding: 15px;
+        max-height: 227px;
 
         &__title {
           font-size: 16px;
         }
 
         &__img {
-          width: 137px;
+          max-width: 137px;
         }
 
         &__category {

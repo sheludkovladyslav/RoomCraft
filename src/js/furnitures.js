@@ -34,7 +34,7 @@ export default [
   {
     key: 'sofa',
     name: 'Диван',
-    image: '',
+    image: '#',
     glb: sofa,
     category: 'Меблі',
     type: 'sofa',
@@ -42,7 +42,7 @@ export default [
   {
     key: 'plant',
     name: 'Рослина',
-    image: '',
+    image: '/public/images/furniture-images/plant.jpg',
     glb: plant,
     category: 'Декорації',
     type: 'decoration',
@@ -50,7 +50,7 @@ export default [
   {
     key: 'wardrope',
     name: 'Шафа',
-    image: '',
+    image: '/public/images/furniture-images/wardrope.jpg',
     glb: wardrope,
     category: 'Меблі',
     type: 'wardrope',
@@ -58,7 +58,7 @@ export default [
   {
     key: 'chair',
     name: 'Крісло',
-    image: '',
+    image: '/public/images/furniture-images/chair.jpg',
     glb: chair,
     category: 'Меблі',
     type: 'chair',
@@ -66,7 +66,7 @@ export default [
   {
     key: 'bookshelf',
     name: 'Книжкова шафа',
-    image: '',
+    image: '/public/images/furniture-images/bookshelf.jpg',
     glb: bookshelf,
     category: 'Меблі',
     type: 'wardrope',
@@ -74,7 +74,7 @@ export default [
   {
     key: 'decorPlant',
     name: 'Декоративна рослина',
-    image: '',
+    image: '/public/images/furniture-images/decor_plant.jpg',
     glb: decorPlant,
     category: 'Декорації',
     type: 'decoration',
@@ -82,7 +82,7 @@ export default [
   {
     key: 'planter',
     name: 'Квітковий горщик',
-    image: '',
+    image: '/public/images/furniture-images/planter.jpg',
     glb: planter,
     category: 'Декорації',
     type: 'decoration',
@@ -90,7 +90,7 @@ export default [
   {
     key: 'keyboard',
     name: 'Клавіатура',
-    image: '',
+    image: '/public/images/furniture-images/keyboard.jpg',
     glb: keyboard,
     category: 'Декорації',
     type: 'decoration',
@@ -98,7 +98,7 @@ export default [
   {
     key: 'twoYarusBed',
     name: 'Модель 1',
-    image: '',
+    image: '#',
     glb: model1,
     category: 'Меблі',
     type: 'bed',
@@ -106,7 +106,7 @@ export default [
   {
     key: 'model2',
     name: 'Модель 2',
-    image: '',
+    image: '/public/images/furniture-images/model2.jpg',
     glb: model2,
     category: 'Меблі',
     type: 'bed',
@@ -114,7 +114,7 @@ export default [
   {
     key: 'cat',
     name: 'Модель 3',
-    image: '',
+    image: '/public/images/furniture-images/cat.jpg',
     glb: model3,
     category: 'Декорації',
     type: 'decoration',
@@ -122,7 +122,7 @@ export default [
   {
     key: 'multybed',
     name: 'Модель 4',
-    image: '',
+    image: '/public/images/furniture-images/multybed.jpg',
     glb: model4,
     category: 'Невідомо',
     type: 'bed',
@@ -130,7 +130,7 @@ export default [
   {
     key: 'model5',
     name: 'Модель 5',
-    image: '',
+    image: '#',
     glb: model5,
     category: 'Невідомо',
     type: 'decoration',
@@ -138,7 +138,7 @@ export default [
   {
     key: 'commonbed',
     name: 'Модель 6',
-    image: '',
+    image: '/public/images/furniture-images/commonbed.jpg',
     glb: model6,
     category: 'Невідомо',
     type: 'bed',
@@ -146,7 +146,7 @@ export default [
   {
     key: 'lowwardrope',
     name: 'Модель 7',
-    image: '',
+    image: '/public/images/furniture-images/lowwardrope.jpg',
     glb: model7,
     category: 'Меблі',
     type: 'wardrope',
@@ -154,7 +154,7 @@ export default [
   {
     key: 'multywardrope',
     name: 'Модель 8',
-    image: '',
+    image: '/public/images/furniture-images/multywardrope.jpg',
     glb: model8,
     category: 'Невідомо',
     type: 'wardrope',
@@ -162,7 +162,7 @@ export default [
   {
     key: 'lamp',
     name: 'Модель 9',
-    image: '',
+    image: '/public/images/furniture-images/lamp.jpg',
     glb: model9,
     category: 'Невідомо',
     type: 'decoration',
@@ -170,7 +170,7 @@ export default [
   {
     key: 'tv',
     name: 'Телевізор',
-    image: '',
+    image: '/public/images/furniture-images/tv.jpg',
     glb: tv,
     category: 'Електроніка',
     type: 'decoration',
@@ -178,7 +178,7 @@ export default [
   {
     key: 'closetwooden_cabinet',
     name: "Дерев'яна шафа",
-    image: '',
+    image: '/public/images/furniture-images/closetwooden_cabinet.jpg',
     glb: closetwooden_cabinet,
     category: 'Меблі',
     type: 'wardrope',
@@ -186,7 +186,7 @@ export default [
   {
     key: 'playstation',
     name: 'PlayStation 5',
-    image: '',
+    image: '/public/images/furniture-images/playstation.jpg',
     glb: playstation,
     category: 'Електроніка',
     type: 'decoration',
@@ -194,7 +194,7 @@ export default [
   {
     key: 'playstationDualsence',
     name: 'PlayStation DualSense',
-    image: '',
+    image: '/public/images/furniture-images/joystick.jpg',
     glb: playstationDualsence,
     category: 'Електроніка',
     type: 'decoration',
@@ -202,7 +202,7 @@ export default [
   {
     key: 'storageCabinet',
     name: 'Шафа для зберігання',
-    image: '',
+    image: '/public/images/furniture-images/storage_cabinet.jpg',
     glb: storageCabinet,
     category: 'Меблі',
     type: 'wardrope',
@@ -210,7 +210,7 @@ export default [
   {
     key: 'coffee_table',
     name: 'Журнальний столик',
-    image: '',
+    image: '/public/images/furniture-images/coffee_table.jpg',
     glb: coffee_table,
     category: 'Меблі',
     type: 'table',
@@ -218,7 +218,7 @@ export default [
   {
     key: 'modern_sofa',
     name: 'Сучасний диван',
-    image: '',
+    image: '#',
     glb: modern_sofa,
     category: 'Меблі',
     type: 'sofa',
@@ -226,7 +226,7 @@ export default [
   {
     key: 'modern_chair',
     name: 'Сучасне крісло',
-    image: '',
+    image: '/public/images/furniture-images/modern_chair.jpg',
     glb: modern_chair,
     category: 'Меблі',
     type: 'chair',
@@ -234,7 +234,7 @@ export default [
   {
     key: 'modern_couch',
     name: 'Сучасний диван-кушетка',
-    image: '',
+    image: '/public/images/furniture-images/modern_couch.png',
     glb: modern_couch,
     category: 'Меблі',
     type: 'sofa',
@@ -242,7 +242,7 @@ export default [
   {
     key: 'modern_fridge',
     name: 'Сучасний холодильник',
-    image: '',
+    image: '/public/images/furniture-images/fridge.jpg',
     glb: modern_fridge,
     category: 'Електроніка',
     type: 'wardrope',
@@ -250,7 +250,7 @@ export default [
   {
     key: 'industrialTable',
     name: 'Індустріальний стіл',
-    image: '',
+    image: '#',
     glb: industrialTable,
     category: 'Меблі',
     type: 'table',
@@ -258,7 +258,7 @@ export default [
   {
     key: 'furniture_couch',
     name: 'Диван (Меблі)',
-    image: '',
+    image: '/public/images/furniture-images/furniture_couch.jpg',
     glb: furniture_couch,
     category: 'Меблі',
     type: 'sofa',
@@ -266,7 +266,7 @@ export default [
   {
     key: 'luxurySofa',
     name: 'Меблі',
-    image: '',
+    image: '#',
     glb: furniture,
     category: 'Меблі',
     type: 'sofa',
@@ -274,7 +274,7 @@ export default [
   {
     key: 'folding_table',
     name: 'Складаний стіл',
-    image: '',
+    image: '/public/images/furniture-images/folding_table.jpg',
     glb: folding_table,
     category: 'Меблі',
     type: 'table',

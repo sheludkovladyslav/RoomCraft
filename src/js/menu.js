@@ -1,5 +1,10 @@
 import furnitureList from './furnitures.js';
 import Swiper from 'swiper';
+import { Mousewheel, Scrollbar } from 'swiper/modules';
+
+Swiper.use([Mousewheel, Scrollbar]);
+
+Swiper.use([Scrollbar, Mousewheel]);
 
 const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
@@ -23,6 +28,10 @@ function initSwiper() {
     scrollbar: {
       el: '.swiper-scrollbar',
       draggable: true,
+    },
+    mousewheel: {
+      sensitivity: 5,
+      forceToAxis: true,
     },
   });
 }

@@ -85,3 +85,14 @@ menuFilter.addEventListener('click', e => {
 });
 
 renderCards();
+
+menuCards.addEventListener('click', e => {
+  const card = e.target.closest('.menu-cards-card');
+  if (!card) return;
+
+  document
+    .querySelectorAll('.menu-cards-card')
+    .forEach(c => c.classList.remove('active'));
+
+  card.classList.add('active');
+});

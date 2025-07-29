@@ -1,49 +1,57 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
+import lodash from 'lodash';
 import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
+const CATEGORY_DIMENSIONS = new Map([
+  ['sofa', 4.5],
+  ['chair', 1.5],
+  ['table', 3],
+  ['decoration', 1],
+  ['wardrope', 3],
+  ['lowwardrope', 3],
+  ['bed', 4],
+]);
 
 export const roomInitHtml = () => {
-  const roomContainer = document.querySelector('.room');
+  const roomContainer = document.querySelector('.room__container');
   const roomHtml = `
-
- <ul data-list class="furniture-list">
- 
- </ul>
- <div class="room__playground">
-  <canvas id="canvas"></canvas>
-</div>
+  
+  <div class="room__playground">
+    <canvas class="playground"></canvas>
+  </div>
 `;
   roomContainer.innerHTML = roomHtml;
 };
 
 export default class Room {
-  constructor({ canvas, button }) {
+  constructor({ canvas, button, container }) {
     this.canvas = canvas;
     this.button = button;
     this.furnitureList = furnitureList;
     this.glb = null;
+    this.walls = [];
+    this.container = container;
+    this.width = this.container.clientWidth;
+    this.height = this.container.clientHeight;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
-      70,
-      sizes.width / sizes.height,
+      50,
+      this.width / this.height,
       0.1,
       100
     );
-    this.camera.position.set(5, 5, 5);
+    this.camera.position.set(14, 12, 14);
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
       canvas: this.canvas,
     });
-    this.renderer.setSize(sizes.width, sizes.height);
+
+    this.renderer.setSize(this.width, this.height);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -75,12 +83,12 @@ export default class Room {
   init() {
     this._setupScene();
     this._setupPhysics();
-    this._setupEvents();
+    this._setupes();
     this._animate();
   }
 
   _setupScene() {
-    this.scene.background = new THREE.Color(0x222222);
+    this.scene.background = new THREE.Color(0x5b5b5b);
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(5, 10, 5);
@@ -92,16 +100,32 @@ export default class Room {
     floorMesh.position.y = -0.05;
     this.scene.add(floorMesh);
 
-    const wallGeometry = new THREE.BoxGeometry(10, 8, 0.1);
+    const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
+    const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
     const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    const wallMesh1 = new THREE.Mesh(wallGeometry, wallMaterial);
-    const wallMesh2 = new THREE.Mesh(wallGeometry, wallMaterial);
-    wallMesh1.position.set(0, 3.9, -5.05);
-    wallMesh2.position.set(-5.05, 3.9, 0);
-    wallMesh2.rotation.y = Math.PI / 2;
-    this.scene.add(wallMesh1, wallMesh2);
 
-    const floorGrid = new THREE.GridHelper(10, 10, 0x020f527, 0xe6e6e6ff);
+    const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
+    const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
+
+    const wallShape = new CANNON.Box(new CANNON.Vec3(10, 8, 0.1));
+    const wallBodyLeft = new CANNON.Body({ mass: 0 });
+    const wallBodyFront = new CANNON.Body({ mass: 0 });
+
+    wallBodyLeft.addShape(wallShape);
+    wallBodyFront.addShape(wallShape);
+
+    wallMeshLeft.position.set(0, 3.9, -5.05);
+    wallMeshFront.position.set(-5.05, 3.9, 0);
+
+    wallBodyFront.position.copy(wallMeshFront);
+    wallBodyLeft.position.copy(wallMeshLeft);
+
+    this.world.addBody(wallBodyLeft);
+    this.world.addBody(wallBodyFront);
+    this.walls.push(wallBodyLeft, wallBodyFront);
+    this.scene.add(wallMeshLeft, wallMeshFront);
+
+    const floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
     this.scene.add(floorGrid);
 
     this.floorMesh = floorMesh;
@@ -129,66 +153,93 @@ export default class Room {
     this.floorBody = floorBody;
   }
 
-  _setupEvents() {
+  _setupes() {
     if (this.button) {
       this.button.addEventListener('click', e => this.spawnFurniture(e));
     }
 
     this.canvas.addEventListener('pointerdown', this._onPointerDown.bind(this));
-    window.addEventListener('pointermove', this._onPointerMove.bind(this));
+    window.addEventListener(
+      'pointermove',
+      lodash.throttle(this._onPointerMove.bind(this), 50)
+    );
     window.addEventListener('pointerup', this._onPointerUp.bind(this));
-    window.addEventListener('contextmenu', this._onKeyDown.bind(this));
+    window.addEventListener('contextmenu', this._rotateFurniture.bind(this));
   }
 
-  _onKeyDown(e) {
+  _rotateFurniture(e) {
     e.preventDefault();
-    if (this.dragging.furniture) {
-      if (this.dragging.furniture.rotationStep === undefined) {
-        this.dragging.furniture.rotationStep = 0;
-      }
+    const furniture = this.dragging.furniture;
+    if (!furniture) return;
 
-      this.dragging.furniture.rotationStep =
-        (this.dragging.furniture.rotationStep + 1) % 4;
-
-      const angle = THREE.MathUtils.degToRad(
-        90 * this.dragging.furniture.rotationStep
-      );
-
-      this.dragging.furniture.mesh.rotation.y = angle;
-
-      this.dragging.furniture.body.quaternion.setFromEuler(0, angle, 0);
+    if (furniture.rotationStep === undefined) {
+      furniture.rotationStep = 0;
     }
+
+    furniture.rotationStep = (furniture.rotationStep + 1) % 4;
+
+    const angle = THREE.MathUtils.degToRad(90 * furniture.rotationStep);
+
+    furniture.mesh.rotation.y = angle;
+    furniture.mesh.quaternion.setFromEuler(furniture.mesh.rotation);
+
+    furniture.body.angularVelocity.setZero();
+    furniture.body.angularDamping = 1;
+
+    furniture.body.quaternion.copy(furniture.mesh.quaternion);
+
+    const size = furniture.size;
+    [size.x, size.z] = [size.z, size.x];
+
+    furniture.body.shapes = [];
+    furniture.body.shapeOffsets = [];
+    furniture.body.shapeOrientations = [];
+
+    const newBoxShape = new CANNON.Box(
+      new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
+    );
+    furniture.body.addShape(newBoxShape);
+
+    furniture.mesh.position.copy(furniture.body.position);
   }
 
-  _onPointerDown(event) {
+  isDescendant(object, parent) {
+    if (object === parent) return true;
+    let current = object.parent;
+    while (current) {
+      if (current === parent) return true;
+      current = current.parent;
+    }
+    return false;
+  }
+
+  _onPointerDown(e) {
     const rect = this.canvas.getBoundingClientRect();
-    this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    this.pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    this.pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
     this.raycaster.setFromCamera(this.pointer, this.camera);
 
     const meshes = this.spawnedFurniture.map(f => f.mesh);
     const intersects = this.raycaster.intersectObjects(meshes);
 
-    console.log(meshes);
-    console.log(intersects);
-
     if (intersects.length > 0) {
-      function isDescendant(object, parent) {
-        if (object === parent) return true;
-        let current = object.parent;
-        while (current) {
-          if (current === parent) return true;
-          current = current.parent;
-        }
-        return false;
-      }
       this.dragging.furniture = this.spawnedFurniture.find(f => {
-        return isDescendant(intersects[0].object, f.mesh);
+        return this.isDescendant(intersects[0].object, f.mesh);
       });
+
+      if (this.dragging.furniture.category.toLowerCase() === 'декорація') {
+        const box = new THREE.Box3().setFromObject(
+          this.dragging.furniture.mesh
+        );
+        this.dragging.furniture.mesh.position.y -= box.min.y;
+        this.dragging.furniture.body.position.copy(
+          this.dragging.furniture.mesh.position
+        );
+      }
+
       this.controls.enabled = false;
 
-      console.log(this.dragging);
       this.raycaster.ray.intersectPlane(this.plane, this.intersectPoint);
       this.dragging.offset.copy(this.dragging.furniture.body.position);
     }
@@ -198,33 +249,66 @@ export default class Room {
     );
   }
 
-  _onPointerMove(event) {
+  _onPointerMove(e) {
     if (!this.dragging.furniture) return;
 
     const rect = this.canvas.getBoundingClientRect();
-    this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    this.pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    this.pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     this.raycaster.setFromCamera(this.pointer, this.camera);
 
     if (this.raycaster.ray.intersectPlane(this.plane, this.intersectPoint)) {
       let newPos = this.intersectPoint.clone().sub(this.dragging.offset);
 
-      newPos.x = Math.round(newPos.x / this.gridSize) * this.gridSize;
-      newPos.z = Math.round(newPos.z / this.gridSize) * this.gridSize;
+      const halfSizeX = this.dragging.furniture.size.x / 2;
+      const halfSizeZ = this.dragging.furniture.size.z / 2;
 
       newPos.x = Math.max(
-        this.bounds.xMin,
-        Math.min(this.bounds.xMax, newPos.x)
+        this.bounds.xMin + halfSizeX,
+        Math.min(this.bounds.xMax - halfSizeX, newPos.x)
       );
-
       newPos.z = Math.max(
-        this.bounds.zMin,
-        Math.min(this.bounds.zMax, newPos.z)
+        this.bounds.zMin + halfSizeZ,
+        Math.min(this.bounds.zMax - halfSizeZ, newPos.z)
       );
 
-      this.dragging.furniture.body.position.x = newPos.x;
-      this.dragging.furniture.body.position.z = newPos.z;
-      this.dragging.furniture.body.velocity.setZero();
+      const body = this.dragging.furniture.body;
+
+      const oldPos = body.position.clone();
+
+      body.position.x = newPos.x;
+      body.position.y = newPos.y;
+
+      let isCollision = false;
+
+      this.spawnedFurniture.forEach(f => {
+        if (f.body === body) return;
+        if (
+          this.dragging.furniture.category === 'Декорація' ||
+          f.category === 'Декорація'
+        )
+          return;
+        if (this.aabbIntersect(body, f.body, { ignoreY: true })) {
+          isCollision = true;
+        }
+      });
+
+      this.walls.forEach(wall => {
+        if (this.aabbIntersect(body, wall, { ignoreY: true })) {
+          isCollision = true;
+        }
+      });
+
+      if (isCollision) {
+        body.position.copy(oldPos);
+        return;
+      } else {
+        this.dragging.furniture.mesh.position.copy(newPos);
+        this.dragging.furniture.body.position.copy(newPos);
+      }
+
+      body.position.set(newPos.x, oldPos.y, newPos.z);
+      body.velocity.setZero();
     }
   }
 
@@ -233,22 +317,103 @@ export default class Room {
       this.controls.enabled = true;
       this.dragging.furniture.body.velocity.setZero();
       this.dragging.furniture.body.angularVelocity.setZero();
+
+      if (this.dragging.furniture.category === 'Декорація') {
+        this.snapOnTop(this.dragging.furniture);
+      }
+
       this.dragging.furniture = null;
     }
   }
 
-  aabbIntersect(bodyA, bodyB) {
-    const aabbA = bodyA.shapes[0].halfExtents;
-    const aabbB = bodyB.shapes[0].halfExtents;
+  snapOnTop(furniture) {
+    const body = furniture.body;
 
-    const posA = bodyA.position;
-    const posB = bodyB.position;
+    const underCandidates = this.spawnedFurniture.filter(f => {
+      if (f === furniture) return false;
+      if (f.category === 'Декорація') return false;
+      return this.aabbIntersect(body, f.body, { ignoreY: true });
+    });
 
-    return (
-      Math.abs(posA.x - posB.x) <= aabbA.x + aabbB.x &&
-      Math.abs(posA.y - posB.y) <= aabbA.y + aabbB.y &&
-      Math.abs(posA.z - posB.z) <= aabbA.z + aabbB.z
+    if (underCandidates.length === 0) return;
+
+    let best = null;
+    let minYDiff = Infinity;
+
+    underCandidates.forEach(f => {
+      const topY = f.body.position.y + (f.size.y - 0.05);
+      const bottomY = body.position.y - (furniture.size.y - 0.05);
+
+      console.log(f);
+
+      const diff = bottomY - topY;
+      if (diff <= 0 && Math.abs(diff) < minYDiff) {
+        minYDiff = Math.abs(diff);
+        best = f;
+      }
+    });
+
+    if (best) {
+      console.log(best);
+      if (best.type === 'wardrope') {
+        const topY = best.body.position.y + (best.size.y - 0.05);
+        const newY = topY + (furniture.size.y - 0.05);
+
+        body.position.y = newY;
+        furniture.mesh.position.y = newY;
+        return;
+      }
+
+      const topY = best.body.position.y + best.size.y / 2 - 0.05;
+      const newY = topY + furniture.size.y / 2 - 0.05;
+
+      body.position.y = newY;
+      furniture.mesh.position.y = newY;
+    }
+  }
+
+  aabbIntersect(bodyA, bodyB, options = {}) {
+    const shapeA = bodyA.shapes[0];
+    const shapeB = bodyB.shapes[0];
+
+    const aabbA = { min: new CANNON.Vec3(), max: new CANNON.Vec3() };
+    const aabbB = { min: new CANNON.Vec3(), max: new CANNON.Vec3() };
+
+    shapeA.calculateWorldAABB(
+      bodyA.position,
+      bodyA.quaternion,
+      aabbA.min,
+      aabbA.max
     );
+    shapeB.calculateWorldAABB(
+      bodyB.position,
+      bodyB.quaternion,
+      aabbB.min,
+      aabbB.max
+    );
+
+    const overlapX = aabbA.min.x <= aabbB.max.x && aabbA.max.x >= aabbB.min.x;
+    const overlapY = aabbA.min.y <= aabbB.max.y && aabbA.max.y >= aabbB.min.y;
+    const overlapZ = aabbA.min.z <= aabbB.max.z && aabbA.max.z >= aabbB.min.z;
+
+    return overlapX && (options.ignoreY ? true : overlapY) && overlapZ;
+  }
+
+  normalizePivot(mesh) {
+    const group = new THREE.Group();
+    group.add(mesh);
+
+    const box = new THREE.Box3().setFromObject(mesh);
+    const center = new THREE.Vector3();
+    const min = new THREE.Vector3();
+
+    box.getCenter(center);
+    min.copy(box.min);
+
+    mesh.position.sub(center);
+    mesh.position.y = -min.y;
+
+    return group;
   }
 
   spawnFurniture(e) {
@@ -256,29 +421,49 @@ export default class Room {
       f => f.key === e.target.dataset.spawn
     );
 
+    const furnitureType = furniture.type;
+
     this.loader.load(furniture.glb, gltf => {
       const mesh = gltf.scene;
-      this.scene.add(mesh);
 
-      const box = new THREE.Box3().setFromObject(mesh);
+      // Нормалізуємо pivot
+      const group = this.normalizePivot(mesh);
+      this.scene.add(group);
+
+      // Рахуємо розмір в групи
+      const box = new THREE.Box3().setFromObject(group);
       const size = new THREE.Vector3();
       box.getSize(size);
 
-      const center = new THREE.Vector3();
-      box.getCenter(center);
-      mesh.position.sub(center);
+      // Достаємо максимальні розміри в залежності від типу
+      const maxDimension = CATEGORY_DIMENSIONS.get(furniture.type);
+
+      const currentMax = Math.max(size.x, size.y, size.z);
+      const scaleFactor = maxDimension / currentMax;
+      group.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+      const scaledBox = new THREE.Box3().setFromObject(group);
+      const scaledSize = new THREE.Vector3();
+      scaledBox.getSize(scaledSize);
+
+      const shape = new CANNON.Box(
+        new CANNON.Vec3(scaledSize.x / 2, scaledSize.y / 2, scaledSize.z / 2)
+      );
 
       const body = new CANNON.Body({ mass: 0 });
-      body.linearDamping = 0.5;
-      body.angularDamping = 0.5;
-      const shape = new CANNON.Box(
-        new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
-      );
-      body.position.set(0, -box.min.y, 0);
       body.addShape(shape);
       this.world.addBody(body);
 
-      this.spawnedFurniture.push({ mesh, body, size });
+      // const boxHelper = new THREE.Box3Helper(scaledBox, 0xff0000);
+      // this.scene.add(boxHelper);
+
+      this.spawnedFurniture.push({
+        mesh: group,
+        body,
+        size: scaledSize,
+        type: furnitureType,
+        category: furniture.category,
+      });
     });
   }
 
@@ -302,8 +487,11 @@ export default class Room {
   }
 
   _onResize() {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.width = this.container.clientWidth;
+    this.height = this.container.clientHeight;
+
+    this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(this.width, this.height);
   }
 }

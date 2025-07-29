@@ -1,57 +1,55 @@
 .header {
-    padding: 49px 35px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  padding: 49px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .theme-toggle {
-    background-color: getLightColors('background-secondary-light');
-    border-radius: 50px;
-    width: 90px;
-    height: 38px;
-    cursor: pointer;
+  background-color: getLightColors('background-secondary-light');
+  border-radius: 50px;
+  width: 90px;
+  height: 38px;
+  cursor: pointer;
 
-    padding: 5px 7px;
-    transition: background-color 250ms ease-in-out;
+  padding: 5px 7px;
+  transition: background-color 250ms ease-in-out;
 
+  &.dark {
+    background-color: getDarkColors('textcolor-legent');
+  }
 
-    &.dark {
-        background-color: getDarkColors('textcolor-legent');
-    }
+  &.dark .theme-toggle__circle-icon--dark {
+    display: block;
+  }
 
-    &.dark .theme-toggle__circle-icon--dark {
-        display: block;
-    }
+  &.dark .theme-toggle__circle-icon--light {
+    display: none;
+  }
 
-    &.dark .theme-toggle__circle-icon--light {
+  &.dark .theme-toggle__circle {
+    transform: translateX(0);
+    background-color: #b2c6d8;
+  }
+
+  &__circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    background-color: getLightColors('background-primery-light');
+    padding: 4px;
+    transform: translateX(48px);
+
+    transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+      fill: #000;
+
+      &--dark {
         display: none;
+      }
     }
-
-    &.dark .theme-toggle__circle {
-        transform: translateX(0);
-        background-color: #b2c6d8;
-    }
-
-    &__circle {
-        width: 28px;
-        height: 28px;
-        border-radius: 100%;
-        background-color: getLightColors('background-primery-light');
-        padding: 4px;
-        transform: translateX(48px);
-
-        transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
-
-        &-icon {
-            width: 20px;
-            height: 20px;
-            fill: #000;
-
-            &--dark {
-                display: none;
-            }
-        }
-    }
+  }
 }
-

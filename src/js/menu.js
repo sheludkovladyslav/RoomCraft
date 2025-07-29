@@ -5,8 +5,8 @@ const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
 
 const categoryMap = {
-  декорації: 'decoration',
-  меблі: 'furniture',
+  декорації: 'Декорації',
+  меблі: 'Меблі',
   електроніка: 'electronics',
   'ін.': 'all',
 };

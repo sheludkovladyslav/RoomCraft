@@ -1,5 +1,5 @@
 {
-  "name": "Room Craft",
+  "name": "roomcraft",
   "version": "2.0.0",
   "description": "An innovative room designer that will help you bring your ideas to life",
   "homepage": "https://sheludkovladyslav.github.io/RoomCraft",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "cannon-es": "^0.20.0",
+    "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "swiper": "^11.2.10",
     "three": "^0.178.0"

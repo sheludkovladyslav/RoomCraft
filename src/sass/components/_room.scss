@@ -1,0 +1,18 @@
+.room {
+  padding-bottom: 35px;
+}
+
+.room__container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 40px;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .room__container {
+    flex-direction: row;
+    gap: 25px;
+    padding-inline: 20px;
+  }
+}

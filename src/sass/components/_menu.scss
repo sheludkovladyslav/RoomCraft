@@ -51,6 +51,10 @@ body {
     }
   }
 
+  main {
+    display: flex;
+  }
+
   &-cards {
     margin-top: 10px;
     overflow: hidden;

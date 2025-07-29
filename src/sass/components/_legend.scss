@@ -7,13 +7,13 @@
   top: 87px;
   left: 9px;
 
-  @media (min-width:768px) {
+  @media (min-width: 768px) {
     top: 13px;
     left: 9px;
     max-width: 385px;
   }
 
-  @media (min-width:1024px) {
+  @media (min-width: 1024px) {
     right: 33px;
     bottom: 42px;
     left: auto;

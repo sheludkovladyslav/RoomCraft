@@ -1,9 +1,19 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
-import lodash, { size } from 'lodash';
+import lodash from 'lodash';
 import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+
+const CATEGORY_DIMENSIONS = new Map([
+  ['sofa', 4.5],
+  ['chair', 1.5],
+  ['table', 3],
+  ['decoration', 1],
+  ['wardrope', 3],
+  ['lowwardrope', 3],
+  ['bed', 4],
+]);
 
 export const roomInitHtml = () => {
   const roomContainer = document.querySelector('.room__container');
@@ -358,8 +368,10 @@ export default class Room {
     let minYDiff = Infinity;
 
     underCandidates.forEach(f => {
-      const topY = f.body.position.y + f.size.y / 2;
-      const bottomY = body.position.y - furniture.size.y / 2;
+      const topY = f.body.position.y + (f.size.y - 0.05);
+      const bottomY = body.position.y - (furniture.size.y - 0.05);
+
+      console.log(f);
 
       const diff = bottomY - topY;
       if (diff <= 0 && Math.abs(diff) < minYDiff) {
@@ -369,8 +381,18 @@ export default class Room {
     });
 
     if (best) {
-      const topY = best.body.position.y + best.size.y / 2;
-      const newY = topY + furniture.size.y / 2;
+      console.log(best);
+      if (best.type === 'wardrope') {
+        const topY = best.body.position.y + (best.size.y - 0.05);
+        const newY = topY + (furniture.size.y - 0.05);
+
+        body.position.y = newY;
+        furniture.mesh.position.y = newY;
+        return;
+      }
+
+      const topY = best.body.position.y + best.size.y / 2 - 0.05;
+      const newY = topY + furniture.size.y / 2 - 0.05;
 
       body.position.y = newY;
       furniture.mesh.position.y = newY;
@@ -404,43 +426,69 @@ export default class Room {
     return overlapX && (options.ignoreY ? true : overlapY) && overlapZ;
   }
 
+  normalizePivot(mesh) {
+    const group = new THREE.Group();
+    group.add(mesh);
+
+    const box = new THREE.Box3().setFromObject(mesh);
+    const center = new THREE.Vector3();
+    const min = new THREE.Vector3();
+
+    box.getCenter(center);
+    min.copy(box.min);
+
+    mesh.position.sub(center);
+    mesh.position.y = -min.y;
+
+    return group;
+  }
+
   spawnFurniture(e) {
     const furniture = this.furnitureList.find(
       f => f.key === e.target.dataset.spawn
     );
 
+    const furnitureType = furniture.type;
+
     this.loader.load(furniture.glb, gltf => {
       const mesh = gltf.scene;
-      this.scene.add(mesh);
 
-      const box = new THREE.Box3().setFromObject(mesh);
+      // Нормалізуємо pivot
+      const group = this.normalizePivot(mesh);
+      this.scene.add(group);
+
+      // Рахуємо розмір в групи
+      const box = new THREE.Box3().setFromObject(group);
       const size = new THREE.Vector3();
       box.getSize(size);
-      const center = new THREE.Vector3();
-      box.getCenter(center);
 
-      // Центруємо низ щоб був на y = 0 в незалежності від pivot`у(нижньої точки моделі)
-      mesh.position.sub(center);
-      mesh.position.y += size.y / 2;
+      // Достаємо максимальні розміри в залежності від типу
+      const maxDimension = CATEGORY_DIMENSIONS.get(furniture.type);
 
-      // Body так само, з допомогою size.y / 2 піднімаємо його трішки вищє
-      const body = new CANNON.Body({ mass: 0 });
+      const currentMax = Math.max(size.x, size.y, size.z);
+      const scaleFactor = maxDimension / currentMax;
+      group.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+      const scaledBox = new THREE.Box3().setFromObject(group);
+      const scaledSize = new THREE.Vector3();
+      scaledBox.getSize(scaledSize);
+
       const shape = new CANNON.Box(
-        new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
+        new CANNON.Vec3(scaledSize.x / 2, scaledSize.y / 2, scaledSize.z / 2)
       );
-      body.addShape(shape);
-      body.position.set(0, size.y / 2, 0);
 
+      const body = new CANNON.Body({ mass: 0 });
+      body.addShape(shape);
       this.world.addBody(body);
 
-      // ПЕРЕСЧИТАЙ box после смещений!
-      const newBox = new THREE.Box3().setFromObject(mesh);
+      // const boxHelper = new THREE.Box3Helper(scaledBox, 0xff0000);
+      // this.scene.add(boxHelper);
 
-      // Запушуємо всі головні частини в массив з меблями
       this.spawnedFurniture.push({
-        mesh,
+        mesh: group,
         body,
-        size,
+        size: scaledSize,
+        type: furnitureType,
         category: furniture.category,
       });
     });

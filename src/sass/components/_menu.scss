@@ -6,6 +6,8 @@
   border-radius: 25px 25px 0px 0px;
   background-color: getLightColors('background-secondary-light');
   padding: 12px 10px;
+  max-height: fit-content;
+  overflow-y: scroll;
 
   &-filter {
     display: flex;

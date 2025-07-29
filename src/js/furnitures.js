@@ -6,7 +6,29 @@ import bookshelf from '/public/models/bookshelf.glb';
 import decorPlant from '/public/models/decor-plant.glb';
 import planter from '/public/models/planter.glb';
 import keyboard from '/public/models/keyboard.glb';
-// import desctopPlant from '../models/desktop-plant.glb';
+import closetwooden_cabinet from '/public/models/closetwooden_cabinet.glb';
+import model1 from '/public/models/model-1.glb';
+import model2 from '/public/models/model-2.glb';
+import model3 from '/public/models/model-3.glb';
+import model4 from '/public/models/model-4.glb';
+import model5 from '/public/models/model-5.glb';
+import model6 from '/public/models/model-6.glb';
+import model7 from '/public/models/model-7.glb';
+import model8 from '/public/models/model-8.glb';
+import model9 from '/public/models/model-9.glb';
+import playstation from '/public/models/playstation.glb';
+import playstationDualsence from '/public/models/playstation_5_dualsense.glb';
+import storageCabinet from '/public/models/storage_cabinet.glb';
+import coffee_table from '/public/models/coffee_table.glb';
+import modern_sofa from '/public/models/modern__sofa.glb';
+import modern_chair from '/public/models/modern_chair.glb';
+import modern_couch from '/public/models/modern_couch.glb';
+import modern_fridge from '/public/models/modern_fridge.glb';
+import industrialTable from '/public/models/industrial_table.glb';
+import furniture_couch from '/public/models/furniture_couch.glb';
+import furniture from '/public/models/furniture.glb';
+import folding_table from '/public/models/folding_table.glb';
+import tv from '/public/models/tv.glb';
 
 export default [
   {
@@ -14,7 +36,8 @@ export default [
     name: 'Диван',
     image: '',
     glb: sofa,
-    category: 'futniture',
+    category: 'мебель',
+    type: 'sofa',
   },
   {
     key: 'plant',
@@ -22,27 +45,31 @@ export default [
     image: '',
     glb: plant,
     category: 'декорація',
+    type: 'decoration',
   },
   {
     key: 'wardrope',
     name: 'Шафа',
     image: '',
     glb: wardrope,
-    category: 'меблі',
+    category: 'мебель',
+    type: 'wardrope',
   },
   {
     key: 'chair',
     name: 'Крісло',
     image: '',
     glb: chair,
-    category: 'меблі',
+    category: 'мебель',
+    type: 'chair',
   },
   {
     key: 'bookshelf',
     name: 'Книжкова шафа',
     image: '',
     glb: bookshelf,
-    category: 'меблі',
+    category: 'мебель',
+    type: 'wardrope',
   },
   {
     key: 'decorPlant',
@@ -50,6 +77,7 @@ export default [
     image: '',
     glb: decorPlant,
     category: 'декорація',
+    type: 'decoration',
   },
   {
     key: 'planter',
@@ -57,6 +85,7 @@ export default [
     image: '',
     glb: planter,
     category: 'декорація',
+    type: 'decoration',
   },
   {
     key: 'keyboard',
@@ -64,5 +93,190 @@ export default [
     image: '',
     glb: keyboard,
     category: 'декорація',
+    type: 'decoration',
+  },
+  {
+    key: 'twoYarusBed',
+    name: 'Модель 1',
+    image: '',
+    glb: model1,
+    category: 'мебель',
+    type: 'bed',
+  },
+  {
+    key: 'model2',
+    name: 'Модель 2',
+    image: '',
+    glb: model2,
+    category: 'мебель',
+    type: 'bed',
+  },
+  {
+    key: 'cat',
+    name: 'Модель 3',
+    image: '',
+    glb: model3,
+    category: 'декорація',
+    type: 'decoration',
+  },
+  {
+    key: 'multybed',
+    name: 'Модель 4',
+    image: '',
+    glb: model4,
+    category: 'незнайомо',
+    type: 'bed',
+  },
+  {
+    key: 'model5',
+    name: 'Модель 5',
+    image: '',
+    glb: model5,
+    category: 'незнайомо',
+    type: 'decoration',
+  },
+  {
+    key: 'commonbed',
+    name: 'Модель 6',
+    image: '',
+    glb: model6,
+    category: 'незнайомо',
+    type: 'bed',
+  },
+  {
+    key: 'lowwardrope',
+    name: 'Модель 7',
+    image: '',
+    glb: model7,
+    category: 'мебель',
+    type: 'wardrope',
+  },
+  {
+    key: 'multywardrope',
+    name: 'Модель 8',
+    image: '',
+    glb: model8,
+    category: 'незнайомо',
+    type: 'wardrope',
+  },
+  {
+    key: 'lamp',
+    name: 'Модель 9',
+    image: '',
+    glb: model9,
+    category: 'незнайомо',
+    type: 'decoration',
+  },
+  {
+    key: 'tv',
+    name: 'Телевізор',
+    image: '',
+    glb: tv,
+    category: 'декорація',
+    type: 'decoration',
+  },
+  {
+    key: 'closetwooden_cabinet',
+    name: "Дерев'яна шафа",
+    image: '',
+    glb: closetwooden_cabinet,
+    category: 'мебель',
+    type: 'wardrope',
+  },
+  {
+    key: 'playstation',
+    name: 'PlayStation 5',
+    image: '',
+    glb: playstation,
+    category: 'декорація',
+    type: 'decoration',
+  },
+  {
+    key: 'playstationDualsence',
+    name: 'PlayStation DualSense',
+    image: '',
+    glb: playstationDualsence,
+    category: 'декорація',
+    type: 'decoration',
+  },
+  {
+    key: 'storageCabinet',
+    name: 'Шафа для зберігання',
+    image: '',
+    glb: storageCabinet,
+    category: 'мебель',
+    type: 'wardrope',
+  },
+  {
+    key: 'coffee_table',
+    name: 'Журнальний столик',
+    image: '',
+    glb: coffee_table,
+    category: 'мебель',
+    type: 'table',
+  },
+  {
+    key: 'modern_sofa',
+    name: 'Сучасний диван',
+    image: '',
+    glb: modern_sofa,
+    category: 'мебель',
+    type: 'sofa',
+  },
+  {
+    key: 'modern_chair',
+    name: 'Сучасне крісло',
+    image: '',
+    glb: modern_chair,
+    category: 'мебель',
+    type: 'chair',
+  },
+  {
+    key: 'modern_couch',
+    name: 'Сучасний диван-кушетка',
+    image: '',
+    glb: modern_couch,
+    category: 'мебель',
+    type: 'sofa',
+  },
+  {
+    key: 'modern_fridge',
+    name: 'Сучасний холодильник',
+    image: '',
+    glb: modern_fridge,
+    category: 'техніка',
+    type: 'wardrope',
+  },
+  {
+    key: 'industrialTable',
+    name: 'Індустріальний стіл',
+    image: '',
+    glb: industrialTable,
+    category: 'мебель',
+    type: 'table',
+  },
+  {
+    key: 'furniture_couch',
+    name: 'Диван (мебель)',
+    image: '',
+    glb: furniture_couch,
+    category: 'мебель',
+    type: 'sofa',
+  },
+  {
+    key: 'luxurySofa',
+    name: 'мебель',
+    image: '',
+    glb: furniture,
+    category: 'мебель',
+    type: 'sofa',
+  },
+  {
+    key: 'folding_table',
+    name: 'Складаний стіл',
+    image: '',
+    glb: folding_table,
+    category: 'мебель',
+    type: 'table',
   },
 ];

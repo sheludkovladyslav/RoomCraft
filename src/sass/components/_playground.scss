@@ -5,6 +5,8 @@
   overflow: hidden;
   border: 10px solid getLightColors('background-primery-light');
   background-color: getDarkColors('background-legent-dark');
+  aspect-ratio: 1;
+  max-height: fit-content;
 }
 canvas {
   width: 100%;

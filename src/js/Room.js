@@ -9,6 +9,7 @@ const CATEGORY_DIMENSIONS = new Map([
   ['sofa', 4.5],
   ['chair', 1.5],
   ['table', 3],
+  ['minitable', 2.5],
   ['decoration', 1],
   ['wardrope', 3],
   ['lowwardrope', 3],
@@ -206,37 +207,26 @@ export default class Room {
     this.scene.add(light);
 
     const floorGeometry = new THREE.BoxGeometry(10, 0.1, 10);
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x444444 });
+    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xeeeeee });
     const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
     floorMesh.position.y = -0.05;
     this.scene.add(floorMesh);
 
     const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
     const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
-    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    const wallMaterial = new THREE.MeshStandardMaterial({
+      color: 0xe3ce56,
+    });
 
     const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
     const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
 
-    const wallShape = new CANNON.Box(new CANNON.Vec3(10, 8, 0.1));
-    const wallBodyLeft = new CANNON.Body({ mass: 0 });
-    const wallBodyFront = new CANNON.Body({ mass: 0 });
-
-    wallBodyLeft.addShape(wallShape);
-    wallBodyFront.addShape(wallShape);
-
     wallMeshLeft.position.set(0, 3.9, -5.05);
     wallMeshFront.position.set(-5.05, 3.9, 0);
 
-    wallBodyFront.position.copy(wallMeshFront);
-    wallBodyLeft.position.copy(wallMeshLeft);
-
-    this.world.addBody(wallBodyLeft);
-    this.world.addBody(wallBodyFront);
-    this.walls.push(wallBodyLeft, wallBodyFront);
     this.scene.add(wallMeshLeft, wallMeshFront);
 
-    this.floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
+    this.floorGrid = new THREE.GridHelper(10, 10, 0x444444, 0x444444);
     this.scene.add(this.floorGrid);
 
     this.floorMesh = floorMesh;
@@ -505,9 +495,18 @@ export default class Room {
 
     if (best) {
       console.log(best);
-      if (best.type === 'wardrope') {
+      if (best.type === 'wardrope' || best.type === 'table') {
         const topY = best.body.position.y + (best.size.y - 0.05);
         const newY = topY + (furniture.size.y - 0.05);
+
+        body.position.y = newY;
+        furniture.mesh.position.y = newY;
+        return;
+      }
+
+      if (best.type === 'minitable') {
+        const topY = best.body.position.y + best.size.y / 2;
+        const newY = topY + furniture.size.y / 2;
 
         body.position.y = newY;
         furniture.mesh.position.y = newY;

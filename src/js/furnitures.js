@@ -213,7 +213,7 @@ export default [
     image: '',
     glb: coffee_table,
     category: 'Меблі',
-    type: 'table',
+    type: 'minitable',
   },
   {
     key: 'modern_sofa',

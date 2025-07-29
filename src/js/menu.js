@@ -3,14 +3,12 @@ import Swiper from 'swiper';
 
 
 
-
-const menuCards = document.getElementById('menuCards')
+const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
-
 const categoryMap = {
-  'декорації': 'decoration',
-  'меблі': 'furniture',
-  'електроніка': 'electronics',
+  декорації: 'decoration',
+  меблі: 'furniture',
+  електроніка: 'electronics',
   'ін.': 'all',
 };
 
@@ -41,23 +39,23 @@ const renderCards = (category = 'all') => {
     const item2 = filteredItems[i + 1];
 
     slidesHTML += `
-      <div class="swiper-slide">
-        <article class="menu-cards-card">
+      <ul class="swiper-slide">
+        <li class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item1.key}">
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">Name: ${item1.name}</h3>
             <span class="menu-cards-card__category">Категорія: ${item1.category}</span>
           </button>
-        </article>
+        </li>
 
         ${item2 ? `
-        <article class="menu-cards-card">
+        <li class="menu-cards-card">
           <button class="furniture__spawn" data-spawn="${item2.key}">
             <div class="menu-cards-card__img"></div>
             <h3 class="menu-cards-card__title">Name: ${item2.name}</h3>
             <span class="menu-cards-card__category">Категорія: ${item2.category}</span>
           </button>
-        </article>` : ''}
+        </li>` : ''}
       </div>
     `;
   }
@@ -71,12 +69,23 @@ const renderCards = (category = 'all') => {
 menuFilter.addEventListener('click', (e) => {
     const li = e.target.closest('.menu-filter__list')
 
-     document.querySelectorAll('.menu-filter__list').forEach((el) => el.classList.remove('active'))
+  
+  menuFilter.addEventListener('click', e => {
+  const li = e.target.closest('.menu-filter__list');
 
-    li.classList.add('active')
+  document
+    .querySelectorAll('.menu-filter__list')
+    .forEach(el => el.classList.remove('active'));
 
-    const category = categoryMap[li.textContent.trim().toLowerCase()] || 'all'
-    renderCards(category)
-})
+  li.classList.add('active');
 
-renderCards()
+  const category = categoryMap[li.textContent.trim().toLowerCase()] || 'all';
+  renderCards(category);
+});
+
+renderCards();
+
+menuCards.addEventListener('click', e => {
+  const card = e.target.closest('.menu-cards-card');
+  if (!card) return;
+

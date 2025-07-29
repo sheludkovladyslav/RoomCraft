@@ -88,21 +88,25 @@ export default class Room {
   }
 
   _setupScene() {
-    this.scene.background = new THREE.Color(0x5b5b5b);
+    this.scene.background = new THREE.Color(0xffffff);
 
-    const light = new THREE.DirectionalLight(0xffffff, 1);
+    const light = new THREE.DirectionalLight(0xffffff, 5);
     light.position.set(5, 10, 5);
     this.scene.add(light);
 
     const floorGeometry = new THREE.BoxGeometry(10, 0.1, 10);
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x444444 });
+    const floorMaterial = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+    });
     const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
     floorMesh.position.y = -0.05;
     this.scene.add(floorMesh);
 
     const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
     const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
-    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    const wallMaterial = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+    });
 
     const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
     const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
@@ -125,8 +129,8 @@ export default class Room {
     this.walls.push(wallBodyLeft, wallBodyFront);
     this.scene.add(wallMeshLeft, wallMeshFront);
 
-    const floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
-    this.scene.add(floorGrid);
+    // const floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
+    // this.scene.add(floorGrid);
 
     this.floorMesh = floorMesh;
 

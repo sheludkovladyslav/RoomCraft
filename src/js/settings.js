@@ -1,4 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
+import { roomInstance } from './Room';
+
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 const settings = document.querySelector('.settings');
@@ -43,6 +45,21 @@ const settingsHandler = event => {
   instance.show();
 
   const modalElement = instance.element();
+  const saveBtn = modalElement.querySelector('.button__save');
+  const loadBtn = modalElement.querySelector('.button__load');
+  const deleteBtn = modalElement.querySelector('.button__delete');
+
+  saveBtn.addEventListener('click', () => {
+    roomInstance.saveRoomState();
+  });
+
+  loadBtn.addEventListener('click', () => {
+    roomInstance.loadRoomState();
+  });
+
+  deleteBtn.addEventListener('click', () => {
+    roomInstance.deleteRoomState();
+  });
 
   const toggleButton = modalElement.querySelector('.toggler');
   toggleButton.addEventListener('click', () => {

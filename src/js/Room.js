@@ -215,7 +215,7 @@ export default class Room {
     const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
     const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
     const wallMaterial = new THREE.MeshStandardMaterial({
-      color: 0xe3ce56,
+      color: 0xffffff,
     });
 
     const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);

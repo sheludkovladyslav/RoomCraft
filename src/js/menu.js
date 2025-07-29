@@ -3,10 +3,8 @@ import Swiper from 'swiper';
 
 const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
+
 const categoryMap = {
-  декорації: 'decoration',
-  меблі: 'furniture',
-  електроніка: 'electronics',
   декорації: 'decoration',
   меблі: 'furniture',
   електроніка: 'electronics',
@@ -65,16 +63,16 @@ const renderCards = (category = 'all') => {
         </li>`
             : ''
         }
-      </div>
+      </ul>
     `;
   }
 
   wrapper.innerHTML = slidesHTML;
   initSwiper();
 };
+
 menuFilter.addEventListener('click', e => {
   const li = e.target.closest('.menu-filter__list');
-  if (!li) return;
 
   document
     .querySelectorAll('.menu-filter__list')

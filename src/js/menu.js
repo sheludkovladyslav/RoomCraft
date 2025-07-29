@@ -1,7 +1,9 @@
 import furnitureList from './furnitures.js';
+import Swiper from 'swiper';
 
 const menuCards = document.getElementById('menuCards');
 const menuFilter = document.getElementById('menuFilter');
+
 const categoryMap = {
   декорації: 'decoration',
   меблі: 'furniture',
@@ -9,21 +11,64 @@ const categoryMap = {
   'ін.': 'all',
 };
 
+let menuSwiper = null;
+
+function initSwiper() {
+  if (menuSwiper) menuSwiper.destroy(true, true);
+
+  menuSwiper = new Swiper('.swiper', {
+    direction: 'vertical',
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+    },
+  });
+}
+
 const renderCards = (category = 'all') => {
-  menuCards.innerHTML = furnitureList
-    .filter(item => category === 'all' || item.category === category)
-    .map(item => {
-      return `
-            <li class="menu-cards-card">
-          <button class="furniture__spawn" data-spawn="${item.key}">
-         <div class="menu-cards-card__img"></div>
-        <h3 class="menu-cards-card__title">${item.name}</h3>
-    <p class="menu-cards-card__category">Категорія: ${item.category}</p>
-              </button>
-</li>
-        `;
-    })
-    .join('');
+  const wrapper = document.getElementById('cardsWrapper');
+  const filteredItems = furnitureList.filter(
+    item => category === 'all' || item.category === category
+  );
+
+  let slidesHTML = '';
+
+  for (let i = 0; i < filteredItems.length; i += 2) {
+    const item1 = filteredItems[i];
+    const item2 = filteredItems[i + 1];
+
+    slidesHTML += `
+      <ul class="swiper-slide">
+        <li class="menu-cards-card">
+          <button class="furniture__spawn" data-spawn="${item1.key}">
+            <div class="menu-cards-card__img"></div>
+            <h3 class="menu-cards-card__title">${item1.name}</h3>
+            <p class="menu-cards-card__category">Категорія: ${
+              item1.category
+            }</p>
+          </button>
+        </li>
+
+        ${
+          item2
+            ? `
+        <li class="menu-cards-card">
+          <button class="furniture__spawn" data-spawn="${item2.key}">
+            <div class="menu-cards-card__img"></div>
+            <h3 class="menu-cards-card__title">${item2.name}</h3>
+            <p class="menu-cards-card__category">Категорія: ${item2.category}</p>
+          </button>
+        </li>`
+            : ''
+        }
+      </ul>
+    `;
+  }
+
+  wrapper.innerHTML = slidesHTML;
+  initSwiper();
 };
 
 menuFilter.addEventListener('click', e => {
@@ -40,14 +85,3 @@ menuFilter.addEventListener('click', e => {
 });
 
 renderCards();
-
-menuCards.addEventListener('click', e => {
-  const card = e.target.closest('.menu-cards-card');
-  if (!card) return;
-
-  document
-    .querySelectorAll('.menu-cards-card')
-    .forEach(c => c.classList.remove('active'));
-
-  card.classList.add('active');
-});

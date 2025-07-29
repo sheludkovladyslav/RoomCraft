@@ -59,7 +59,7 @@ const renderCards = (category = 'all') => {
         <li class="menu-cards-card" data-spawn="${item2.key}">
           <button class="furniture__spawn" >
             <div class="menu-cards-card__img">
-              <img src="${item1.image}" alt="${item1.name}" />
+              <img src="${item2.image}" alt="${item2.name}" />
             <h3 class="menu-cards-card__title">${item2.name}</h3>
             <p class="menu-cards-card__category">Категорія: ${item2.category}</p>
           </button>

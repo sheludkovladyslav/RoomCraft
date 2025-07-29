@@ -91,11 +91,21 @@ export default class Room {
     this._setupPhysics();
     this._setupes();
     this._animate();
+    this.gridCheck();
   }
 
   deleteRoomState() {
     localStorage.removeItem('roomState');
     alert('Кімнату видалено, дякуємо за користування Room Craft!');
+  }
+
+  gridCheck() {
+    const state = localStorage.getItem('grid');
+    if (state === 'gridOff') {
+      this.floorGrid.visible = false;
+    } else {
+      this.floorGrid.visible = true;
+    }
   }
 
   saveRoomState() {
@@ -224,8 +234,8 @@ export default class Room {
     this.walls.push(wallBodyLeft, wallBodyFront);
     this.scene.add(wallMeshLeft, wallMeshFront);
 
-    const floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
-    this.scene.add(floorGrid);
+    this.floorGrid = new THREE.GridHelper(10, 10, 0xe6e6e6ff);
+    this.scene.add(this.floorGrid);
 
     this.floorMesh = floorMesh;
 

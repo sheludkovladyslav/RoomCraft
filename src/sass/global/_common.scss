@@ -5,7 +5,6 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.214;
-  overflow: hidden;
 }
 
 body.dark {
@@ -41,5 +40,11 @@ body.dark {
 @media (min-width: 768px) {
   .main-container {
     padding: 0 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
   }
 }

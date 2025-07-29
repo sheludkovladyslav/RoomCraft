@@ -86,10 +86,22 @@ body {
       box-shadow: -4px 6px 14.7px 1px rgba(0, 0, 0, 0.25);
       padding: 10px;
 
+
       &__img {
-        width: 117px;
+        max-width: 117px;
+        max-height: 78px;
         flex-shrink: 0;
         aspect-ratio: 147/128;
+        margin: 0 auto;
+        border-radius: 10px;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
+          max-width: 100%;
+          border-radius: 10px;
+        }
       }
 
       &__title {
@@ -173,7 +185,8 @@ body {
         }
 
         &__img {
-          width: 152px;
+          max-width: 152px;
+          max-height: 94px;
         }
       }
     }
@@ -196,6 +209,7 @@ body {
         font-size: 14px;
       }
     }
+
     .swiper {
       padding: 15px 20px 0 20px;
     }
@@ -209,7 +223,7 @@ body {
         }
 
         &__img {
-          width: 137px;
+          max-width: 137px;
         }
 
         &__category {

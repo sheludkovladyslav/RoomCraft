@@ -10,12 +10,31 @@ body {
   flex-direction: column;
   max-height: 100vh;
   border-radius: 49px;
-  background: rgba(0, 65, 125, 0.3);
+  background: getDarkColors('background-menu');
+
   max-width: 320px;
   max-height: 997px;
   width: 100%;
   padding-bottom: 15px;
   height: 100%;
+  position: static;
+  margin: 0 auto;
+
+  @media (min-width:768px) {
+    position: absolute;
+    bottom: -25%;
+    left: 272px;
+    z-index: 10;
+    max-height: 413px;
+
+  }
+
+
+  @media (min-width:1024px) {
+    position: static;
+    max-height: 100vh;
+    background: rgba(0, 65, 125, 0.3);
+  }
 
   &-filter {
     display: flex;
@@ -116,6 +135,7 @@ body {
     z-index: 1;
   }
 }
+
 .swiper {
   height: 100%;
   padding: 15px 20px 0 20px;

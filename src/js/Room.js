@@ -26,6 +26,12 @@ export const roomInitHtml = () => {
   roomContainer.innerHTML = roomHtml;
 };
 
+export let roomInstance = null;
+
+export function setRoomInstance(instance) {
+  roomInstance = instance;
+}
+
 export default class Room {
   constructor({ canvas, button, container }) {
     this.canvas = canvas;
@@ -85,6 +91,99 @@ export default class Room {
     this._setupPhysics();
     this._setupes();
     this._animate();
+  }
+
+  deleteRoomState() {
+    localStorage.removeItem('roomState');
+    alert('Кімнату видалено, дякуємо за користування Room Craft!');
+  }
+
+  saveRoomState() {
+    const state = this.spawnedFurniture.map(f => ({
+      key: f.key || null,
+      type: f.type,
+      category: f.category,
+      position: {
+        x: f.body.position.x,
+        y: f.body.position.y,
+        z: f.body.position.z,
+      },
+      quaternion: {
+        x: f.body.quaternion.x,
+        y: f.body.quaternion.y,
+        z: f.body.quaternion.z,
+        w: f.body.quaternion.w,
+      },
+      scale: {
+        x: f.mesh.scale.x,
+        y: f.mesh.scale.y,
+        z: f.mesh.scale.z,
+      },
+    }));
+
+    localStorage.setItem('roomState', JSON.stringify(state));
+  }
+
+  loadRoomState() {
+    const saved = localStorage.getItem('roomState');
+    if (!saved) return;
+
+    const state = JSON.parse(saved);
+
+    state.forEach(fData => {
+      const furniture = this.furnitureList.find(
+        f => f.type === fData.type && f.category === fData.category
+      );
+      if (!furniture) return;
+
+      this.loader.load(furniture.glb, gltf => {
+        const mesh = gltf.scene;
+        const group = this.normalizePivot(mesh);
+        this.scene.add(group);
+
+        group.scale.set(fData.scale.x, fData.scale.y, fData.scale.z);
+        group.position.set(
+          fData.position.x,
+          fData.position.y,
+          fData.position.z
+        );
+        group.quaternion.set(
+          fData.quaternion.x,
+          fData.quaternion.y,
+          fData.quaternion.z,
+          fData.quaternion.w
+        );
+
+        const box = new THREE.Box3().setFromObject(group);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+
+        const shape = new CANNON.Box(
+          new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2)
+        );
+
+        const body = new CANNON.Body({ mass: 0 });
+        body.addShape(shape);
+        body.position.set(fData.position.x, fData.position.y, fData.position.z);
+        body.quaternion.set(
+          fData.quaternion.x,
+          fData.quaternion.y,
+          fData.quaternion.z,
+          fData.quaternion.w
+        );
+
+        this.world.addBody(body);
+
+        this.spawnedFurniture.push({
+          mesh: group,
+          body,
+          size,
+          type: furniture.type,
+          category: furniture.category,
+          key: fData.key,
+        });
+      });
+    });
   }
 
   _setupScene() {

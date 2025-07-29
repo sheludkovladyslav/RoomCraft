@@ -3,6 +3,7 @@
   cursor: grab;
   max-width: 302px;
   width: 100%;
+  max-height: 103px;
 
   z-index: 12;
   top: 87px;
@@ -23,6 +24,7 @@
     top: auto;
     max-width: 423px;
   }
+
 
   &__wrapper {
     max-width: 302px;
@@ -151,6 +153,7 @@
 
   .info-button {
     padding: 10px 15px;
+
   }
 
   .show {

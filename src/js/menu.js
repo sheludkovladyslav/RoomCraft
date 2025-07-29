@@ -46,10 +46,12 @@ const renderCards = (category = 'all') => {
             <div class="menu-cards-card__img">
              <img src="${item1.image}" alt="${item1.name}" />
             </div>
+            <div class="furniture__text">
             <h3 class="menu-cards-card__title">${item1.name}</h3>
             <p class="menu-cards-card__category">Категорія: ${
               item1.category
             }</p>
+            </div>
           </button>
         </li>
 

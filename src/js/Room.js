@@ -5,6 +5,7 @@ import furnitureList from './furnitures.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 import floorGlb from '/public/models/floor.glb';
+import wallpaper from '/public/textures/wall-texture-4.jpg';
 
 const CATEGORY_DIMENSIONS = new Map([
   ['sofa', 4.5],
@@ -81,6 +82,7 @@ export default class Room {
     };
 
     this.loader = new GLTFLoader();
+    this.wallTexture = new THREE.TextureLoader();
 
     this.world = new CANNON.World();
     this.world.gravity.set(0, 0, 0);
@@ -201,6 +203,11 @@ export default class Room {
   }
 
   _setupScene() {
+    this.controls.maxDistance = 70;
+
+    this.controls.minAzimuthAngle = -Math.PI / 6 / 4;
+    this.controls.maxAzimuthAngle = Math.PI / 2;
+    this.controls.update();
     this.scene.background = new THREE.Color(0x5b5b5b);
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -220,19 +227,23 @@ export default class Room {
     floorMesh.position.y = -0.06;
     this.scene.add(floorMesh);
 
-    const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
-    const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
-    const wallMaterial = new THREE.MeshStandardMaterial({
-      color: 0xffffff,
+    this.wallTexture.load(wallpaper, texture => {
+      const wallMaterial = new THREE.MeshStandardMaterial({
+        map: texture,
+        color: 0xffffff,
+      });
+
+      const wallGeometryLeft = new THREE.BoxGeometry(10, 8, 0.1);
+      const wallGeometryRight = new THREE.BoxGeometry(0.1, 8, 10);
+
+      const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
+      const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
+
+      wallMeshLeft.position.set(0, 3.9, -5.05);
+      wallMeshFront.position.set(-5.05, 3.9, 0);
+
+      this.scene.add(wallMeshLeft, wallMeshFront);
     });
-
-    const wallMeshLeft = new THREE.Mesh(wallGeometryLeft, wallMaterial);
-    const wallMeshFront = new THREE.Mesh(wallGeometryRight, wallMaterial);
-
-    wallMeshLeft.position.set(0, 3.9, -5.05);
-    wallMeshFront.position.set(-5.05, 3.9, 0);
-
-    this.scene.add(wallMeshLeft, wallMeshFront);
 
     this.floorGrid = new THREE.GridHelper(10, 10, 0x444444, 0x444444);
 
